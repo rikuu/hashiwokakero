@@ -1,7 +1,5 @@
 package riku.hashiwokakero.logiikka;
 
-import riku.hashiwokakero.logiikka.Saari;
-import riku.hashiwokakero.logiikka.SiltaKartta;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -1,3 +1,4 @@
 15.1.	0.25h	Repositorio, aihemäärittely ja tuntikirjanpito pystyyn
 22.1.	1h		Ohjelmoinnin ja testauksen aloitus, perusluokat saarien
 				yhdistämiseen silloilla
+22.1.	0.1h	Alustava luokkakaavio
