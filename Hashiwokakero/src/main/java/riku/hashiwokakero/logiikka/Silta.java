@@ -26,5 +26,9 @@ public class Silta {
     boolean yhdistaa(Saari a, Saari b) {        
         return ((lahto == a) && (loppu == b)) ||
                 (lahto == b) && (loppu == a);
-    }    
+    }
+    
+    boolean yhdistaa(Saari saari) {
+        return ((lahto == saari) || (loppu == saari));
+    }
 }

@@ -10,5 +10,9 @@ public class Saari {
         this.x = x;
         this.y = y;
     }
+    
+    int getVaaditut() {
+        return vaaditutSillat;
+    }
 
 }

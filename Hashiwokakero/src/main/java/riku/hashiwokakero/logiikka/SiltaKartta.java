@@ -38,4 +38,13 @@ public class SiltaKartta {
         
         return summa;
     }
+    
+    int maara(Saari saari) {        
+        for (Silta s : sillat) {
+            if (s.yhdistaa(saari))
+                return s.onTupla() ? 2 : 1;
+        }
+        
+        return 0;
+    }
 }
