@@ -39,4 +39,32 @@ public class Peli {
     public ArrayList<Saari> getSaaret() {
         return saaret;
     }
+
+    public Saari getSaari(int x, int y) {
+        for (Saari s : saaret) {
+            if ((x >= (s.x - 18)) && (x <= (s.x + 18)) &&
+                (y >= (s.y - 18)) && (y <= (s.y + 18)))
+                    return s;
+        }
+        
+        return null;
+    }
+    
+    public boolean saariaValissa(Saari a, Saari b) {
+        for (Saari s : saaret) {
+            if (a.x == b.x) {
+                if ((s.x == a.x) &&
+                        (s.y < Math.max(a.y, b.y)) && (s.y > Math.min(a.y, b.y))) {
+                    return true;
+                }
+            } else {
+                if ((s.y == a.y) &&
+                        (s.x < Math.max(a.x, b.x)) && (s.x > Math.min(a.x, b.x))) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
 }

@@ -3,6 +3,7 @@ package riku.hashiwokakero.ui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import javax.swing.JPanel;
 
 import riku.hashiwokakero.logiikka.Peli;
@@ -14,6 +15,7 @@ public class PeliLauta extends JPanel {
     private SiltaKartta sillat;
     
     private Sillat sillasto;
+    private Rakentaja rakentaja;
     
     private static final Color[] VARIT = {
         new Color(0, 0, 0),
@@ -36,11 +38,12 @@ public class PeliLauta extends JPanel {
         // Rankkaa refactorii, kiits
         sillasto = new Sillat(sillat);
         
+        rakentaja = new Rakentaja(peli);
+        addMouseListener(rakentaja);
+        addMouseMotionListener(rakentaja);
+        
         setBackground(Color.black);
         setDoubleBuffered(true);
-        
-        // addMouseListener(this);
-        // addMouseMotionListener(this);
     }
 
     @Override
@@ -49,6 +52,14 @@ public class PeliLauta extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         
         sillasto.piirra(g2);
+        
+        if (rakentaja.raahaa()) {
+            Saari lahto = rakentaja.getLahto();
+            Point paikka = rakentaja.getPaikka();
+            
+            g2.setColor(puolitaAlfa(Color.white));
+            g2.drawLine(lahto.x, lahto.y, paikka.x, paikka.y);
+        }
         
         for (Saari saari : peli.getSaaret()) {
             g2.setColor(puolitaAlfa(VARIT[sillat.maara(saari)]));

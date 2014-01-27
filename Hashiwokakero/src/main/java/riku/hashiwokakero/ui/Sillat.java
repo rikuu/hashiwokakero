@@ -8,7 +8,7 @@ import riku.hashiwokakero.logiikka.Silta;
 import riku.hashiwokakero.logiikka.SiltaKartta;
 
 public class Sillat {
-    private SiltaKartta sillat;
+    private final SiltaKartta sillat;
     
     public Sillat(SiltaKartta s) {
         sillat = s;
