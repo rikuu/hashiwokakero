@@ -13,7 +13,7 @@ public class Peli {
     
     public boolean ratkaistu() {
         for (Saari saari : saaret) {
-            if (sillat.maara(saari) != saari.getVaaditut()) {
+            if (sillat.maara(saari) != saari.vaaditutSillat) {
                 return false;
             }                
         }

@@ -25,8 +25,8 @@ public class SiltaKartta {
     
     public void poista(Saari a, Saari b) {
         for (Silta s : sillat) {
-            if (s.yhdistaa(a, b)) {                
-                sillat.remove(s);
+            if (s.yhdistaa(a, b)) {
+                sillat.remove(s);                
                 return;
             }
         }
@@ -34,6 +34,7 @@ public class SiltaKartta {
     
     public int maara(Saari saari) {
         int summa = 0;
+        
         for (Silta s : sillat) {
             if (s.yhdistaa(saari))
                 summa += s.onTupla() ? 2 : 1;

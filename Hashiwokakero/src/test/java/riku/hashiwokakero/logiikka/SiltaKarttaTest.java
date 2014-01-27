@@ -13,18 +13,24 @@ public class SiltaKarttaTest {
         kartta = new SiltaKartta();
         
         a = new Saari(0, 0, 0);
-        b = new Saari(1, 1, 1);
+        b = new Saari(1, 0, 0);
     }
 
+    private void saaretMaara(int maara) {
+        assertEquals(kartta.maara(a), maara);
+        assertEquals(kartta.maara(b), maara);
+    } 
+    
     @Test
     public void aluussaTyhja() {
-        assertEquals(kartta.maara(), 0);
+        saaretMaara(0);
     }
     
     @Test
     public void lisaaYhden() {
         kartta.lisaa(a, b);
-        assertEquals(kartta.maara(), 1);
+        
+        saaretMaara(1);
     }
     
     @Test
@@ -32,7 +38,7 @@ public class SiltaKarttaTest {
         kartta.lisaa(a, b);
         kartta.lisaa(a, b);
         
-        assertEquals(kartta.maara(), 2);
+        saaretMaara(2);
     }
     
     @Test
@@ -42,15 +48,15 @@ public class SiltaKarttaTest {
         
         assertEquals(kartta.lisaa(a, b), false);
         
-        assertEquals(kartta.maara(), 2);
+        saaretMaara(2);
     }
     
     @Test
     public void poistaaYhden() {
-        kartta.lisaa(a, b);
-        
+        kartta.lisaa(a, b);        
         kartta.poista(a, b);
-        assertEquals(kartta.maara(), 0);
+        
+        saaretMaara(0);
     }
     
     @Test
@@ -59,6 +65,6 @@ public class SiltaKarttaTest {
         kartta.lisaa(a, b);
         
         kartta.poista(a, b);
-        assertEquals(kartta.maara(), 0);
+        saaretMaara(0);
     }
 }
