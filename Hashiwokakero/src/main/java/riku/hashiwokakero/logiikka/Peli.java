@@ -21,7 +21,22 @@ public class Peli {
         return true;
     }
     
-    void uusiSaari() {
+    public void uusiSaari() {
         saaret.add(new Saari(0, 0, 0));
+    }
+    
+    
+    public Saari uusiSaari(int x, int y, int s) {
+        Saari saari = new Saari(s, x, y);
+        saaret.add(saari);
+        return saari;
+    }
+    
+    public SiltaKartta getSillat() {
+        return sillat;
+    }
+    
+    public ArrayList<Saari> getSaaret() {
+        return saaret;
     }
 }
