@@ -13,12 +13,7 @@ public class Main extends JFrame {
         Saari s2 = p.uusiSaari(300, 300, 3);
         Saari s3 = p.uusiSaari(300, 200, 2);
         Saari s4 = p.uusiSaari(300, 400, 1);
-        
-        p.getSillat().lisaa(s1, s2);
-        p.getSillat().lisaa(s1, s2);
-        p.getSillat().lisaa(s2, s3);
-        //p.getSillat().lisaa()
-        
+                
         add(new PeliLauta(p));
         
         setTitle("Hashiwokakero");

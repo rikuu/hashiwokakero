@@ -41,6 +41,10 @@ public class Peli {
     }
 
     public Saari getSaari(int x, int y) {
+        // 18 = saaren leveys / 2
+        // voi olla parempi miettii onko nyt kyse
+        // logiikka- vai ui-pakkauksen tarpeista
+        
         for (Saari s : saaret) {
             if ((x >= (s.x - 18)) && (x <= (s.x + 18)) &&
                 (y >= (s.y - 18)) && (y <= (s.y + 18)))
@@ -51,6 +55,8 @@ public class Peli {
     }
     
     public boolean saariaValissa(Saari a, Saari b) {
+        // Cleanimpi code, kiits
+        
         for (Saari s : saaret) {
             if (a.x == b.x) {
                 if ((s.x == a.x) &&
