@@ -42,4 +42,8 @@ public class SiltaKartta {
         
         return summa;
     }
+    
+    public ArrayList<Silta> getSillat() {
+        return sillat;
+    }
 }

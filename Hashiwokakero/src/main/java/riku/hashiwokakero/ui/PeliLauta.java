@@ -13,6 +13,8 @@ public class PeliLauta extends JPanel {
     private Peli peli;
     private SiltaKartta sillat;
     
+    private Sillat sillasto;
+    
     private static final Color[] VARIT = {
         new Color(0, 0, 0),
         
@@ -31,6 +33,9 @@ public class PeliLauta extends JPanel {
         this.peli = peli;
         sillat = peli.getSillat();
         
+        // Rankkaa refactorii, kiits
+        sillasto = new Sillat(sillat);
+        
         setBackground(Color.black);
         setDoubleBuffered(true);
         
@@ -42,6 +47,8 @@ public class PeliLauta extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
+        
+        sillasto.piirra(g2);
         
         for (Saari saari : peli.getSaaret()) {
             g2.setColor(puolitaAlfa(VARIT[sillat.maara(saari)]));
