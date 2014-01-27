@@ -6,12 +6,12 @@ public class Peli {
     private ArrayList<Saari> saaret;
     private SiltaKartta sillat;
     
-    Peli() {
+    public Peli() {
         saaret = new ArrayList<>();
         sillat = new SiltaKartta();
     }
     
-    boolean ratkaistu() {
+    public boolean ratkaistu() {
         for (Saari saari : saaret) {
             if (sillat.maara(saari) != saari.getVaaditut()) {
                 return false;

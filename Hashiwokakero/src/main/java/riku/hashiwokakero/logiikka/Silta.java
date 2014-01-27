@@ -1,7 +1,7 @@
 package riku.hashiwokakero.logiikka;
 
 public class Silta {
-    private Saari lahto, loppu;
+    public final Saari lahto, loppu;
     private boolean tupla;
     
     Silta(Saari a, Saari b) {
@@ -11,11 +11,11 @@ public class Silta {
         tupla = false;
     }
     
-    boolean onTupla() {
+    public boolean onTupla() {
         return tupla;
     }
     
-    boolean tuplaa() {        
+    public boolean tuplaa() {        
         if (tupla)
             return false;
                 
@@ -23,12 +23,12 @@ public class Silta {
         return true;
     }
     
-    boolean yhdistaa(Saari a, Saari b) {        
+    public boolean yhdistaa(Saari a, Saari b) {        
         return ((lahto == a) && (loppu == b)) ||
                 (lahto == b) && (loppu == a);
     }
     
-    boolean yhdistaa(Saari saari) {
+    public boolean yhdistaa(Saari saari) {
         return ((lahto == saari) || (loppu == saari));
     }
 }

@@ -5,11 +5,14 @@ import java.util.ArrayList;
 public class SiltaKartta {
     private ArrayList<Silta> sillat;
     
-    SiltaKartta() {
+    public SiltaKartta() {
         sillat = new ArrayList<>();
     }
     
-    boolean lisaa(Saari a, Saari b) {
+    public boolean lisaa(Saari a, Saari b) {
+        if (((a.x != b.x) && (a.y != b.y)) || (a == b))
+            return false;
+
         for (Silta s : sillat) {
             if (s.yhdistaa(a, b)) {
                 return s.tuplaa();
@@ -20,7 +23,7 @@ public class SiltaKartta {
         return true;
     }
     
-    void poista(Saari a, Saari b) {
+    public void poista(Saari a, Saari b) {
         for (Silta s : sillat) {
             if (s.yhdistaa(a, b)) {                
                 sillat.remove(s);
@@ -29,22 +32,13 @@ public class SiltaKartta {
         }
     }
     
-    int maara() {
+    public int maara(Saari saari) {
         int summa = 0;
-        
         for (Silta s : sillat) {
-            summa += (s.onTupla()) ? 2 : 1;
+            if (s.yhdistaa(saari))
+                summa += s.onTupla() ? 2 : 1;
         }
         
         return summa;
-    }
-    
-    int maara(Saari saari) {        
-        for (Silta s : sillat) {
-            if (s.yhdistaa(saari))
-                return s.onTupla() ? 2 : 1;
-        }
-        
-        return 0;
     }
 }
