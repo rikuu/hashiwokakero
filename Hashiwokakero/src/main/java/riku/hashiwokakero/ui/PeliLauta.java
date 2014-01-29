@@ -53,6 +53,8 @@ public class PeliLauta extends JPanel {
         
         sillasto.piirra(g2);
         
+        // Tää ehkä tekee liikaa asiaa...
+        
         if (rakentaja.raahaa()) {
             Saari lahto = rakentaja.getLahto();
             Point paikka = rakentaja.getPaikka();

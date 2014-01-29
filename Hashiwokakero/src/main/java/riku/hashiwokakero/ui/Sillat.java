@@ -15,6 +15,9 @@ public class Sillat {
     }
     
     public void piirra(Graphics2D g2) {
+        // Onko varmasti looginen omana luokkana;
+        // käyttää pelkästään yhtä funktiota.
+        
         g2.setStroke(new BasicStroke(6)); 
         g2.setColor(Color.white);
         
