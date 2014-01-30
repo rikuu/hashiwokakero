@@ -18,7 +18,7 @@ public class Sillat {
         // Onko varmasti looginen omana luokkana;
         // käyttää pelkästään yhtä funktiota.
         
-        g2.setStroke(new BasicStroke(6)); 
+        g2.setStroke(new BasicStroke(6));
         g2.setColor(Color.white);
         
         for (Silta s : sillat.getSillat()) {
@@ -32,18 +32,13 @@ public class Sillat {
                     offsetY = 6;
                 }
 
-                g2.drawLine(s.lahto.x + offsetX,
-                        s.lahto.y + offsetY,
-                        s.loppu.x + offsetX,
-                        s.loppu.y + offsetY);
+                g2.drawLine(s.lahto.x + offsetX, s.lahto.y + offsetY,
+                        s.loppu.x + offsetX, s.loppu.y + offsetY);
 
-                g2.drawLine(s.lahto.x - offsetX,
-                        s.lahto.y - offsetY,
-                        s.loppu.x - offsetX,
-                        s.loppu.y - offsetY);
+                g2.drawLine(s.lahto.x - offsetX, s.lahto.y - offsetY,
+                        s.loppu.x - offsetX, s.loppu.y - offsetY);
             } else {
-                g2.drawLine(s.lahto.x, s.lahto.y,
-                        s.loppu.x, s.loppu.y);
+                g2.drawLine(s.lahto.x, s.lahto.y, s.loppu.x, s.loppu.y);
             }
         }
     }

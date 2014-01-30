@@ -8,11 +8,9 @@ import javax.swing.JPanel;
 
 import riku.hashiwokakero.logiikka.Peli;
 import riku.hashiwokakero.logiikka.Saari;
-import riku.hashiwokakero.logiikka.SiltaKartta;
 
 public class PeliLauta extends JPanel {
     private Peli peli;
-    private SiltaKartta sillat;
     
     private Sillat sillasto;
     private Rakentaja rakentaja;
@@ -33,10 +31,8 @@ public class PeliLauta extends JPanel {
     
     public PeliLauta(Peli peli) {
         this.peli = peli;
-        sillat = peli.getSillat();
         
-        // Rankkaa refactorii, kiits
-        sillasto = new Sillat(sillat);
+        sillasto = new Sillat(peli.getSillat());
         
         rakentaja = new Rakentaja(peli);
         addMouseListener(rakentaja);
@@ -52,19 +48,10 @@ public class PeliLauta extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         
         sillasto.piirra(g2);
-        
-        // Tää ehkä tekee liikaa asiaa...
-        
-        if (rakentaja.raahaa()) {
-            Saari lahto = rakentaja.getLahto();
-            Point paikka = rakentaja.getPaikka();
-            
-            g2.setColor(puolitaAlfa(Color.white));
-            g2.drawLine(lahto.x, lahto.y, paikka.x, paikka.y);
-        }
+        rakentaja.piirra(g2);
         
         for (Saari saari : peli.getSaaret()) {
-            g2.setColor(puolitaAlfa(VARIT[sillat.maara(saari)]));
+            g2.setColor(puolitaAlfa(VARIT[saari.getSillat()]));
             g2.fillRect(saari.x - 24, saari.y - 24, 48, 48);
             
             g2.setColor(VARIT[saari.vaaditutSillat]);

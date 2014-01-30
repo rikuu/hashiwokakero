@@ -9,24 +9,42 @@ public class SiltaKartta {
         sillat = new ArrayList<>();
     }
     
+    private void lisaaSillat(Saari a, Saari b) {
+        // Hahaa, Clean Code.
+        
+        a.lisaaSilta();
+        b.lisaaSilta();
+    }
+    
     public boolean lisaa(Saari a, Saari b) {
         if (((a.x != b.x) && (a.y != b.y)) || (a == b))
             return false;
 
         for (Silta s : sillat) {
             if (s.yhdistaa(a, b)) {
-                return s.tuplaa();
+                if (s.tuplaa()) {
+                    lisaaSillat(a, b);
+                    
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
         
         sillat.add(new Silta(a, b));
+        lisaaSillat(a, b);
         return true;
     }
     
     public void poista(Saari a, Saari b) {
         for (Silta s : sillat) {
             if (s.yhdistaa(a, b)) {
-                sillat.remove(s);                
+                a.poistaSilta();
+                b.poistaSilta();
+                
+                sillat.remove(s);
+                
                 return;
             }
         }

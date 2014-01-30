@@ -13,7 +13,7 @@ public class Peli {
     
     public boolean ratkaistu() {
         for (Saari saari : saaret) {
-            if (sillat.maara(saari) != saari.vaaditutSillat) {
+            if (saari.getSillat() != saari.vaaditutSillat) {
                 return false;
             }                
         }
@@ -21,10 +21,13 @@ public class Peli {
         return true;
     }
     
+    public void uusiSilta(Saari a, Saari b) {
+        sillat.lisaa(a, b);
+    }
+    
     public void uusiSaari() {
         saaret.add(new Saari(0, 0, 0));
     }
-    
     
     public Saari uusiSaari(int x, int y, int s) {
         Saari saari = new Saari(s, x, y);
@@ -53,7 +56,7 @@ public class Peli {
         
         return null;
     }
-    
+
     public boolean saariaValissa(Saari a, Saari b) {
         // Cleanimpi code, kiits
         

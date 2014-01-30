@@ -1,10 +1,15 @@
 package riku.hashiwokakero.ui;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Point;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+
 import javax.swing.JComponent;
+
 import riku.hashiwokakero.logiikka.Peli;
 import riku.hashiwokakero.logiikka.Saari;
 
@@ -12,7 +17,7 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
     private Peli peli;
     
     private boolean raahaus;
-    private Saari raahausLahto;
+    private Saari lahto;
     private Point hiiri;
 
     public Rakentaja(Peli p) {
@@ -21,16 +26,11 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
         raahaus = false;
     }
     
-    public boolean raahaa() {
-        return raahaus;
-    }
-    
-    public Saari getLahto() {
-        return raahausLahto;
-    }
-    
-    public Point getPaikka() {
-        return hiiri;
+    public void piirra(Graphics g2) {
+        if (raahaus) {
+            g2.setColor(Color.white);
+            g2.drawLine(lahto.x, lahto.y, hiiri.x, hiiri.y);
+        }
     }
     
     @Override
@@ -40,17 +40,16 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
         if (raahaus) {
             raahaus = false;
             
-            if ((saari != null) && !peli.saariaValissa(raahausLahto, saari)) {
-                peli.getSillat().lisaa(raahausLahto, saari);
+            if ((saari != null) && !peli.saariaValissa(lahto, saari)) {
+                peli.uusiSilta(lahto, saari);
             }
         } else {
-            raahausLahto = saari;
+            lahto = saari;
             raahaus = (saari != null);
             hiiri = e.getPoint();
         }
         
-        JComponent s = (JComponent) e.getSource();
-        s.repaint();
+        ((JComponent) e.getSource()).repaint();
     }
     
     @Override
@@ -58,8 +57,7 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
         if (raahaus) {
             hiiri = e.getPoint();
             
-            JComponent s = (JComponent) e.getSource();
-            s.repaint();
+            ((JComponent) e.getSource()).repaint();
         }
     }
     
