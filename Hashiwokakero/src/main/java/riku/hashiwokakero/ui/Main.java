@@ -3,11 +3,10 @@ package riku.hashiwokakero.ui;
 import javax.swing.JFrame;
 
 import riku.hashiwokakero.logiikka.Peli;
-import riku.hashiwokakero.logiikka.Saari;
 
 public class Main extends JFrame {    
     public Main() {
-        Peli p = new Peli();
+        Peli p = new Peli(10);
                 
         add(new PeliLauta(p));
         

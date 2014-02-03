@@ -4,13 +4,24 @@ public class Peli {
     private SaariKartta saaret;
     private SiltaKartta sillat;
     
-    public Peli() {
-        saaret = new SaariKartta();
+    private Generaattori gen;
+    
+    public Peli(int maara) {
         sillat = new SiltaKartta();
+        saaret = new SaariKartta();
+        
+        gen = new Generaattori(saaret);
+        
+        uusiPeli(maara);
+    }
+
+    private void uusiPeli(int maara) {
+        for (int i = 0; i < maara; i++)
+            gen.uusiSaari();
     }
     
     public boolean ratkaistu() {
-        return true;
+        return saaret.ratkaistu();
     }
     
     public SiltaKartta getSillat() {
