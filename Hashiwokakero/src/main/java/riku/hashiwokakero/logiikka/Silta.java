@@ -9,18 +9,30 @@ public class Silta {
         loppu = b;
         
         tupla = false;
+        
+        lahto.lisaaSilta();
+        loppu.lisaaSilta();
+    }
+    
+    public void romauta() {
+        if (tupla) {
+            lahto.poistaSilta();
+            loppu.poistaSilta();
+        }
+        
+        lahto.poistaSilta();
+        loppu.poistaSilta();
     }
     
     public boolean onTupla() {
         return tupla;
     }
     
-    public boolean tuplaa() {        
-        if (tupla)
-            return false;
-                
+    public void tuplaa() {        
         tupla = true;
-        return true;
+        
+        lahto.lisaaSilta();
+        loppu.lisaaSilta();
     }
     
     public boolean yhdistaa(Saari a, Saari b) {        

@@ -33,14 +33,16 @@ public class SiltaTest {
     
     @Test
     public void tuplaTuplaa() {
-        assertEquals(silta.tuplaa(), true);
+        silta.tuplaa();
+        
         assertEquals(silta.onTupla(), true);
     }
     
     @Test
     public void tuplaTuplaEiTuplaa() {
-        assertEquals(silta.tuplaa(), true);
-        assertEquals(silta.tuplaa(), false);
+        silta.tuplaa();
+        silta.tuplaa();
+        
         assertEquals(silta.onTupla(), true);
     }
 }

@@ -46,6 +46,8 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
             if (peli.onSaari(x, y)) {
                 raahaus = true;
                 lahto = hiiri = e.getPoint();
+            } else {
+                peli.poistaSilta(x, y);
             }
         }
         

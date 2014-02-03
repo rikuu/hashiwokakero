@@ -9,40 +9,24 @@ public class SiltaKartta {
         sillat = new ArrayList<>();
     }
     
-    private void lisaaSillat(Saari a, Saari b) {
-        // Hahaa, Clean Code.
-        
-        a.lisaaSilta();
-        b.lisaaSilta();
-    }
-    
-    public boolean lisaa(Saari a, Saari b) {
+    public void lisaa(Saari a, Saari b) {
         if (((a.x != b.x) && (a.y != b.y)) || (a == b))
-            return false;
+            return;
 
         for (Silta s : sillat) {
             if (s.yhdistaa(a, b)) {
-                if (s.tuplaa()) {
-                    lisaaSillat(a, b);
-                    
-                    return true;
-                } else {
-                    return false;
-                }
+                s.tuplaa();
+                return;
             }
         }
         
         sillat.add(new Silta(a, b));
-        lisaaSillat(a, b);
-        return true;
     }
     
     public void poista(Saari a, Saari b) {
         for (Silta s : sillat) {
             if (s.yhdistaa(a, b)) {
-                a.poistaSilta();
-                b.poistaSilta();
-                
+                s.romauta();
                 sillat.remove(s);
                 
                 return;
@@ -63,5 +47,29 @@ public class SiltaKartta {
     
     public ArrayList<Silta> getSillat() {
         return sillat;
+    }
+    
+    public Silta getSilta(int x, int y) {
+        for (Silta s : sillat) {
+            int akx = (800 / 2) + (s.lahto.x * 36);
+            int aky = (600 / 2) + (s.lahto.y * 36);
+            
+            int okx = (800 / 2) + (s.loppu.x * 36);
+            int oky = (600 / 2) + (s.loppu.y * 36);
+            
+            if (akx == okx) {
+                if ((x >= (akx - 18)) && (x <= (akx + 18)) &&
+                    (y <= (Math.max(aky, oky)+18)) &&
+                    (y >= (Math.min(aky, oky)+18)))
+                        return s;
+            } else {
+                if ((y >= (aky - 18)) && (y <= (aky + 18)) &&
+                    (x <= (Math.max(akx, okx)+18)) &&
+                    (x >= (Math.min(akx, okx)+18)))
+                        return s;
+            }
+        }
+        
+        return null;
     }
 }

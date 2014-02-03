@@ -45,8 +45,7 @@ public class SiltaKarttaTest {
     public void lisaaSamanKahdesti() {
         kartta.lisaa(a, b);
         kartta.lisaa(a, b);
-        
-        assertEquals(kartta.lisaa(a, b), false);
+        kartta.lisaa(a, b);
         
         saaretMaara(2);
     }

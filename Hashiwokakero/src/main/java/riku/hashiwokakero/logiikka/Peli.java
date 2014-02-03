@@ -34,4 +34,12 @@ public class Peli {
         if (!saaret.saariaValissa(a, b))
             sillat.lisaa(a, b);
     }
+    
+    public void poistaSilta(int x, int y) {
+        Silta silta = sillat.getSilta(x, y);
+        
+        if (silta != null) {
+            sillat.poista(silta.lahto, silta.loppu);
+        }
+    }
 }
