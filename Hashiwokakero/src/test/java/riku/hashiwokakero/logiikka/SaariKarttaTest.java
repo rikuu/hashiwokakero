@@ -23,7 +23,7 @@ public class SaariKarttaTest {
         assertEquals(saaret.ratkaistu(), true);
     }
     
-    /*@Test
+    @Test
     public void saariOnValissa() {
         Saari s1 = new Saari(-1, 0, 1);
         Saari s2 = new Saari(0, 0, 2);
@@ -63,5 +63,5 @@ public class SaariKarttaTest {
         saaret.lisaa(s1);
         
         assertEquals(saaret.getSaari(1, 0), null);
-    }*/
+    }
 }

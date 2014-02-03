@@ -66,4 +66,21 @@ public class SiltaKarttaTest {
         kartta.poista(a, b);
         saaretMaara(0);
     }
+    
+    @Test
+    public void siltaItseensa() {
+        kartta.lisaa(a, a);
+        
+        saaretMaara(0);
+    }
+    
+    @Test
+    public void huonoSilta() {
+        Saari c = new Saari(1, 1, 0);
+        
+        kartta.lisaa(a, c);
+        
+        assertEquals(kartta.maara(c), 0);
+        saaretMaara(0);
+    }
 }
