@@ -30,9 +30,18 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
             g2.drawLine(lahto.x, lahto.y, hiiri.x, hiiri.y);
         }
     }
+   
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        if (raahaus) {
+            hiiri = e.getPoint();
+            
+            ((JComponent) e.getSource()).repaint();
+        }
+    }
     
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
         
@@ -55,18 +64,9 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
     }
     
     @Override
-    public void mouseMoved(MouseEvent e) {
-        if (raahaus) {
-            hiiri = e.getPoint();
-            
-            ((JComponent) e.getSource()).repaint();
-        }
+    public void mouseClicked(MouseEvent e) {
     }
     
-    @Override
-    public void mousePressed(MouseEvent e) {        
-    }
-     
     @Override
     public void mouseReleased(MouseEvent e) {        
     }

@@ -22,6 +22,12 @@ public class Sillat {
         g2.setColor(Color.white);
         
         for (Silta s : sillat.getSillat()) {
+            int kx1 = (800 / 2) + (s.lahto.x * 36);
+            int ky1 = (600 / 2) + (s.lahto.y * 36);
+            
+            int kx2 = (800 / 2) + (s.loppu.x * 36);
+            int ky2 = (600 / 2) + (s.loppu.y * 36);
+            
             if (s.onTupla()) {
                 int offsetX, offsetY;
                 if (s.lahto.x == s.loppu.x) {
@@ -32,13 +38,13 @@ public class Sillat {
                     offsetY = 6;
                 }
 
-                g2.drawLine(s.lahto.x + offsetX, s.lahto.y + offsetY,
-                        s.loppu.x + offsetX, s.loppu.y + offsetY);
+                g2.drawLine(kx1 + offsetX, ky1 + offsetY,
+                        kx2 + offsetX, ky2 + offsetY);
 
-                g2.drawLine(s.lahto.x - offsetX, s.lahto.y - offsetY,
-                        s.loppu.x - offsetX, s.loppu.y - offsetY);
+                g2.drawLine(kx1 - offsetX, ky1 - offsetY,
+                        kx2 - offsetX, ky2 - offsetY);
             } else {
-                g2.drawLine(s.lahto.x, s.lahto.y, s.loppu.x, s.loppu.y);
+                g2.drawLine(kx1, ky1, kx2, ky2);
             }
         }
     }
