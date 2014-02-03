@@ -40,23 +40,33 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
         }
     }
     
+    private static Point ruudukkoon(Point p) {
+        double dx = ((double) (p.x - 400)) / 36.0;
+        double dy = ((double) (p.y - 300)) / 36.0;
+
+        int x = (int) Math.round(dx);
+        int y = (int) Math.round(dy);
+        
+        return new Point(x, y);
+    }
+    
     @Override
     public void mousePressed(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
+        Point r = ruudukkoon(e.getPoint());
         
         if (raahaus) {
             raahaus = false;
             
-            if (peli.onSaari(x, y)) {
-                peli.uusiSilta(lahto.x, lahto.y, x, y);
+            if (peli.onSaari(r.x, r.y)) {
+                Point l = ruudukkoon(lahto);
+                peli.uusiSilta(l.x, l.y, r.x, r.y);
             }
         } else {
-            if (peli.onSaari(x, y)) {
+            if (peli.onSaari(r.x, r.y)) {
                 raahaus = true;
                 lahto = hiiri = e.getPoint();
             } else {
-                peli.poistaSilta(x, y);
+                peli.poistaSilta(r.x, r.y);
             }
         }
         

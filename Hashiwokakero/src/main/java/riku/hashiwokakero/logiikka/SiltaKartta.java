@@ -51,21 +51,15 @@ public class SiltaKartta {
     
     public Silta getSilta(int x, int y) {
         for (Silta s : sillat) {
-            int akx = (800 / 2) + (s.lahto.x * 36);
-            int aky = (600 / 2) + (s.lahto.y * 36);
-            
-            int okx = (800 / 2) + (s.loppu.x * 36);
-            int oky = (600 / 2) + (s.loppu.y * 36);
-            
-            if (akx == okx) {
-                if ((x >= (akx - 18)) && (x <= (akx + 18)) &&
-                    (y <= (Math.max(aky, oky)+18)) &&
-                    (y >= (Math.min(aky, oky)+18)))
+            if (s.lahto.x == s.loppu.x) {
+                if ((x == s.lahto.x) &&
+                    (y <= Math.max(s.lahto.y, s.loppu.y)) &&
+                    (y >= Math.min(s.lahto.y, s.loppu.y)))
                         return s;
             } else {
-                if ((y >= (aky - 18)) && (y <= (aky + 18)) &&
-                    (x <= (Math.max(akx, okx)+18)) &&
-                    (x >= (Math.min(akx, okx)+18)))
+                if ((y == s.lahto.y) &&
+                    (x <= Math.max(s.lahto.x, s.loppu.x)) &&
+                    (x >= Math.min(s.lahto.x, s.loppu.x)))
                         return s;
             }
         }

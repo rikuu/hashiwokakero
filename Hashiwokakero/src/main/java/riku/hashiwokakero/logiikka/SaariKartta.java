@@ -24,17 +24,9 @@ public class SaariKartta {
     }
     
     public Saari getSaari(int x, int y) {
-        // 18 = saaren leveys / 2
-        // voi olla parempi miettii onko nyt kyse
-        // logiikka- vai ui-pakkauksen tarpeista
-        
         for (Saari saari : saaret) {
-            int keskix = (800 / 2) + (saari.x * 36);
-            int keskiy = (600 / 2) + (saari.y * 36);
-            
-            if ((x >= (keskix - 18)) && (x <= (keskix + 18)) &&
-                (y >= (keskiy - 18)) && (y <= (keskiy + 18)))
-                    return saari;
+            if ((x == saari.x) && (y == saari.y))
+                return saari;
         }
         
         return null;
