@@ -41,5 +41,17 @@ public class SaariTest {
         
         assertEquals(saari.getSillat(), 0);
     }
+    
+    @Test
+    public void vaatiiAlussaOikein() {
+        assertEquals(saari.getVaaditutSillat(), 0);
+    }
+    
+    @Test
+    public void lisaaVaaditunSillan() {
+        saari.vaadiLisaa(1);
+        
+        assertEquals(saari.getVaaditutSillat(), 1);
+    }
 }
 

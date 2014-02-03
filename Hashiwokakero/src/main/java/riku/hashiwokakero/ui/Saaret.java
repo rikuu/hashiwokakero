@@ -39,7 +39,7 @@ public class Saaret {
             g2.setColor(puolitaAlfa(VARIT[saari.getSillat()]));
             g2.fillRect(keskix - 6, keskiy - 6, 48, 48);
             
-            g2.setColor(VARIT[saari.vaaditutSillat]);
+            g2.setColor(VARIT[saari.getVaaditutSillat()]);
             g2.fillRect(keskix, keskiy, 36, 36);
         }
     }

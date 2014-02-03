@@ -1,7 +1,5 @@
 package riku.hashiwokakero.logiikka;
 
-import java.util.ArrayList;
-
 public class Peli {
     private SaariKartta saaret;
     private SiltaKartta sillat;

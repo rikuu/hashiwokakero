@@ -1,12 +1,12 @@
 package riku.hashiwokakero.logiikka;
 
 public class Saari {
-    public final int vaaditutSillat;
     public final int x, y;
     
+    private int vaaditutSillat;
     private int sillat;
     
-    public Saari(int siltoja, int x, int y) {
+    public Saari(int x, int y, int siltoja) {
         vaaditutSillat = siltoja;
         
         this.x = x;
@@ -21,11 +21,18 @@ public class Saari {
     
     public void poistaSilta() {
         sillat = Math.max(sillat - 1, 0);
-        // if (sillat < 0) return false
     }
         
     public int getSillat() {
         return sillat;
+    }
+    
+    public int getVaaditutSillat() {
+        return vaaditutSillat;
+    }
+    
+    public void vaadiLisaa(int x) {
+        vaaditutSillat += x;
     }
     
     public boolean tarpeeksiSiltoja() {
