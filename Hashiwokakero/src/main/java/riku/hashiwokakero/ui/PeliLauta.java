@@ -50,7 +50,7 @@ public class PeliLauta extends JPanel {
         sillasto.piirra(g2);
         rakentaja.piirra(g2);
         
-        for (Saari saari : peli.getSaaret()) {
+        for (Saari saari : peli.getSaaret().getSaaret()) {
             g2.setColor(puolitaAlfa(VARIT[saari.getSillat()]));
             g2.fillRect(saari.x - 24, saari.y - 24, 48, 48);
             

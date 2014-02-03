@@ -3,77 +3,35 @@ package riku.hashiwokakero.logiikka;
 import java.util.ArrayList;
 
 public class Peli {
-    private ArrayList<Saari> saaret;
+    private SaariKartta saaret;
     private SiltaKartta sillat;
     
     public Peli() {
-        saaret = new ArrayList<>();
+        saaret = new SaariKartta();
         sillat = new SiltaKartta();
     }
     
     public boolean ratkaistu() {
-        for (Saari saari : saaret) {
-            if (saari.getSillat() != saari.vaaditutSillat) {
-                return false;
-            }                
-        }
-        
         return true;
-    }
-    
-    public void uusiSilta(Saari a, Saari b) {
-        sillat.lisaa(a, b);
-    }
-    
-    public void uusiSaari() {
-        saaret.add(new Saari(0, 0, 0));
-    }
-    
-    public Saari uusiSaari(int x, int y, int s) {
-        Saari saari = new Saari(s, x, y);
-        saaret.add(saari);
-        return saari;
     }
     
     public SiltaKartta getSillat() {
         return sillat;
     }
     
-    public ArrayList<Saari> getSaaret() {
+    public SaariKartta getSaaret() {
         return saaret;
     }
-
-    public Saari getSaari(int x, int y) {
-        // 18 = saaren leveys / 2
-        // voi olla parempi miettii onko nyt kyse
-        // logiikka- vai ui-pakkauksen tarpeista
-        
-        for (Saari s : saaret) {
-            if ((x >= (s.x - 18)) && (x <= (s.x + 18)) &&
-                (y >= (s.y - 18)) && (y <= (s.y + 18)))
-                    return s;
-        }
-        
-        return null;
+    
+    public boolean onSaari(int x, int y) {
+        return (saaret.getSaari(x, y) != null);
     }
-
-    public boolean saariaValissa(Saari a, Saari b) {
-        // Cleanimpi code, kiits
+    
+    public void uusiSilta(int ax, int ay, int bx, int by) {
+        Saari a = saaret.getSaari(ax, ay);
+        Saari b = saaret.getSaari(bx, by);
         
-        for (Saari s : saaret) {
-            if (a.x == b.x) {
-                if ((s.x == a.x) &&
-                        (s.y < Math.max(a.y, b.y)) && (s.y > Math.min(a.y, b.y))) {
-                    return true;
-                }
-            } else {
-                if ((s.y == a.y) &&
-                        (s.x < Math.max(a.x, b.x)) && (s.x > Math.min(a.x, b.x))) {
-                    return true;
-                }
-            }
-        }
-        
-        return false;
+        if (!saaret.saariaValissa(a, b))
+            sillat.lisaa(a, b);
     }
 }

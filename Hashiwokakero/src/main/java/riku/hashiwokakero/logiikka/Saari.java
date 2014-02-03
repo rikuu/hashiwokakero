@@ -27,4 +27,8 @@ public class Saari {
     public int getSillat() {
         return sillat;
     }
+    
+    public boolean tarpeeksiSiltoja() {
+        return (vaaditutSillat == sillat);
+    }
 }

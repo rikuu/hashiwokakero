@@ -11,17 +11,15 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JComponent;
 
 import riku.hashiwokakero.logiikka.Peli;
-import riku.hashiwokakero.logiikka.Saari;
 
 public class Rakentaja implements MouseListener, MouseMotionListener {
     private Peli peli;
     
     private boolean raahaus;
-    private Saari lahto;
-    private Point hiiri;
+    private Point lahto, hiiri;
 
-    public Rakentaja(Peli p) {
-        peli = p;
+    public Rakentaja(Peli peli) {
+        this.peli = peli;
         
         raahaus = false;
     }
@@ -35,18 +33,20 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        Saari saari = peli.getSaari(e.getX(), e.getY());
+        int x = e.getX();
+        int y = e.getY();
         
         if (raahaus) {
             raahaus = false;
             
-            if ((saari != null) && !peli.saariaValissa(lahto, saari)) {
-                peli.uusiSilta(lahto, saari);
+            if (peli.onSaari(x, y)) {
+                peli.uusiSilta(lahto.x, lahto.y, x, y);
             }
         } else {
-            lahto = saari;
-            raahaus = (saari != null);
-            hiiri = e.getPoint();
+            if (peli.onSaari(x, y)) {
+                raahaus = true;
+                lahto = hiiri = e.getPoint();
+            }
         }
         
         ((JComponent) e.getSource()).repaint();
