@@ -38,4 +38,15 @@ public class Saari {
     public boolean tarpeeksiSiltoja() {
         return (vaaditutSillat == sillat);
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if ((obj == null) || (!(obj instanceof Saari)))
+            return false;
+        else if (obj == this)
+            return true;
+        
+        Saari saari = (Saari) obj;
+        return ((saari.x == this.x) && (saari.y == this.y));
+    }
 }
