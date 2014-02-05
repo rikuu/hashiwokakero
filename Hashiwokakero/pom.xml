@@ -41,6 +41,7 @@
               <instrumentation>
                 <includes>
                   <include>riku.hashiwokakero.logiikka/*.class</include>
+				  <include>riku.hashiwokakero.domain/*.class</include>
                 </includes>
               </instrumentation>
             </configuration>
@@ -52,9 +53,11 @@
               <configuration>
               <targetClasses>
                 <param>riku.hashiwokakero.logiikka*</param>
+				<param>riku.hashiwokakero.domain*</param>
               </targetClasses>
               <targetTests>
                 <param>riku.hashiwokakero.logiikka*</param>
+				<param>riku.hashiwokakero.domain*</param>
               </targetTests>
             </configuration>
           </plugin>
