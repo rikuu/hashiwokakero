@@ -1,10 +1,12 @@
-package riku.hashiwokakero.logiikka;
+package riku.hashiwokakero.domain;
+
+import riku.hashiwokakero.domain.Saari;
 
 public class Silta {
     public final Saari lahto, loppu;
     private boolean tupla;
     
-    Silta(Saari a, Saari b) {
+    public Silta(Saari a, Saari b) {
         lahto = a;
         loppu = b;
         

@@ -3,7 +3,7 @@ package riku.hashiwokakero.ui;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import riku.hashiwokakero.logiikka.Saari;
+import riku.hashiwokakero.domain.Saari;
 import riku.hashiwokakero.logiikka.SaariKartta;
 
 public class Saaret {

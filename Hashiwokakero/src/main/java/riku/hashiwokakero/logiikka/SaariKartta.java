@@ -1,5 +1,6 @@
 package riku.hashiwokakero.logiikka;
 
+import riku.hashiwokakero.domain.Saari;
 import java.util.ArrayList;
 
 public class SaariKartta {

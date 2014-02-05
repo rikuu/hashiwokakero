@@ -1,5 +1,7 @@
 package riku.hashiwokakero.logiikka;
 
+import riku.hashiwokakero.domain.Saari;
+
 public class Generaattori {
     private SaariKartta saaret;
     

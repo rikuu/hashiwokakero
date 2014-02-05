@@ -4,7 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import riku.hashiwokakero.logiikka.Silta;
+import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.logiikka.SiltaKartta;
 
 public class Sillat {

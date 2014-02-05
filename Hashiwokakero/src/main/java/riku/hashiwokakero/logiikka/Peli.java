@@ -1,5 +1,8 @@
 package riku.hashiwokakero.logiikka;
 
+import riku.hashiwokakero.domain.Silta;
+import riku.hashiwokakero.domain.Saari;
+
 public class Peli {
     private SaariKartta saaret;
     private SiltaKartta sillat;

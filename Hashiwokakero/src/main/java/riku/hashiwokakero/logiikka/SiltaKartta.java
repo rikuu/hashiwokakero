@@ -1,5 +1,7 @@
 package riku.hashiwokakero.logiikka;
 
+import riku.hashiwokakero.domain.Silta;
+import riku.hashiwokakero.domain.Saari;
 import java.util.ArrayList;
 
 public class SiltaKartta {

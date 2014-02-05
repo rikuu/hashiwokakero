@@ -1,4 +1,4 @@
-package riku.hashiwokakero.logiikka;
+package riku.hashiwokakero.domain;
 
 public class Saari {
     public final int x, y;
