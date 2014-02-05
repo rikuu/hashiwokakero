@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 import riku.hashiwokakero.domain.Saari;
+
 import riku.hashiwokakero.logiikka.SaariKartta;
 
 /**
@@ -35,10 +36,10 @@ public class Saaret {
             Point rsaari = Util.ruudulle(saari.x, saari.y);
             
             g2.setColor(Util.puolitaAlfa(VARIT[saari.getSillat()]));
-            g2.fillRect(rsaari.x - 24, rsaari.x - 24, 48, 48);
+            g2.fillRect(rsaari.x - 24, rsaari.y - 24, 48, 48);
             
             g2.setColor(VARIT[saari.getVaaditutSillat()]);
-            g2.fillRect(rsaari.x - 18, rsaari.x - 18, 36, 36);
+            g2.fillRect(rsaari.x - 18, rsaari.y - 18, 36, 36);
         }
     }
     

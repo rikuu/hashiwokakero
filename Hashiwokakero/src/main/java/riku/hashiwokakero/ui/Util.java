@@ -26,7 +26,7 @@ public class Util {
      * @return 
      */
     public static Point ruudulle(int x, int y) {
-        // Ruutu on 800x600
+        // Ikkuna on 800x600
         // Saaret on 36x36
         
         int rx = (800 / 2) + (x * 36);
@@ -42,8 +42,8 @@ public class Util {
      * @return 
      */
     public static Point ruudukkoon(Point p) {
-        double dx = ((double) (p.x - 400)) / 36.0;
-        double dy = ((double) (p.y - 300)) / 36.0;
+        double dx = (double) (p.x - (800 / 2)) / 36.0;
+        double dy = (double) (p.y - (600 / 2)) / 36.0;
 
         int x = (int) Math.round(dx);
         int y = (int) Math.round(dy);
