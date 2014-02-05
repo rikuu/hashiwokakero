@@ -4,6 +4,9 @@ import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.domain.Saari;
 import java.util.ArrayList;
 
+/**
+ * Huolehtii silloista.
+ */
 public class SiltaKartta {
     private ArrayList<Silta> sillat;
     

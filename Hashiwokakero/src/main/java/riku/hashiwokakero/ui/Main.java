@@ -4,6 +4,9 @@ import javax.swing.JFrame;
 
 import riku.hashiwokakero.logiikka.Peli;
 
+/**
+ * Pelkästään luo ikkunan pelille.
+ */
 public class Main extends JFrame {    
     public Main() {
         Peli p = new Peli(10);

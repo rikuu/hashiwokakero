@@ -2,6 +2,9 @@ package riku.hashiwokakero.logiikka;
 
 import riku.hashiwokakero.domain.Saari;
 
+/**
+ * Generoi pelikenttiä.
+ */
 public class Generaattori {
     private SaariKartta saaret;
     
@@ -29,6 +32,9 @@ public class Generaattori {
         return saaret.getSaaret().get(i);
     }
     
+    /**
+     * Lisää uuden saaren SaariKarttaan
+     */
     public void uusiSaari() {
         if (saaret.getSaaret().isEmpty()) {
             saaret.lisaa(new Saari(0, 0, 0));

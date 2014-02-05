@@ -8,6 +8,11 @@ import javax.swing.JPanel;
 
 import riku.hashiwokakero.logiikka.Peli;
 
+/**
+ * Käyttöliittyäpuolen vastakappale Peli-luokalle;
+ * sitoo yhteen eri palaset.
+ * @see Peli
+ */
 public class PeliLauta extends JPanel {
     private Sillat sillasto;
     private Saaret saaristo;    

@@ -1,7 +1,8 @@
 package riku.hashiwokakero.domain;
 
-import riku.hashiwokakero.domain.Saari;
-
+/**
+ * Yhdistää saaria.
+ */
 public class Silta {
     public final Saari lahto, loppu;
     private boolean tupla;

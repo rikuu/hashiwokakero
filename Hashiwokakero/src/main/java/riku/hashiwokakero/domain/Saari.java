@@ -1,5 +1,8 @@
 package riku.hashiwokakero.domain;
 
+/**
+ * Edustaa saaria.
+ */
 public class Saari {
     public final int x, y;
     

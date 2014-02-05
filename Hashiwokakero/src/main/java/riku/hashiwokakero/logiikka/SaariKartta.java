@@ -3,6 +3,9 @@ package riku.hashiwokakero.logiikka;
 import riku.hashiwokakero.domain.Saari;
 import java.util.ArrayList;
 
+/**
+ * Pitää huolta saarista.
+ */
 public class SaariKartta {
     private ArrayList<Saari> saaret;
     

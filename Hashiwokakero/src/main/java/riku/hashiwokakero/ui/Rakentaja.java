@@ -12,6 +12,10 @@ import javax.swing.JComponent;
 
 import riku.hashiwokakero.logiikka.Peli;
 
+/**
+ * Kuuntelee hiiren tekemisiä ja sen mukaan joko rakentaa
+ * tai purkaa siltoja.
+ */
 public class Rakentaja implements MouseListener, MouseMotionListener {
     private Peli peli;
     

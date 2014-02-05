@@ -5,8 +5,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import riku.hashiwokakero.domain.Silta;
+
 import riku.hashiwokakero.logiikka.SiltaKartta;
 
+/**
+ * Piirtää sillat ruudulle
+ */
 public class Sillat {
     private final SiltaKartta sillat;
     
