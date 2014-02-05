@@ -1,6 +1,6 @@
-15.1.	0.25h	Repositorio, aihemäärittely ja tuntikirjanpito pystyyn
+﻿15.1.	0.25h	Repositorio, aihemäärittely ja tuntikirjanpito pystyyn
 22.1.	1h	Ohjelmoinnin ja testauksen aloitus, perusluokat saarien
-				yhdistämiseen silloilla
+		yhdistämiseen silloilla
 22.1.	0.1h	Alustava luokkakaavio
 23.1.	0.5h	Vähän lisää ohjelmointia, että kehtaa siihen 2. deadlineen
 26.1.	2h	GUI-harjottelua
@@ -8,3 +8,4 @@
 29.1.	0.1h	Luokkakaavio ja pit-raportti
 30.1.	1h	Ohjelmointia vielä ennen deadlinea
 3.2.	5h	Ohjelmointi
+5.2.	1h	Vähän JavaDoc
