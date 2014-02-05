@@ -6,9 +6,12 @@ import java.awt.Graphics2D;
 import riku.hashiwokakero.domain.Saari;
 import riku.hashiwokakero.logiikka.SaariKartta;
 
+/**
+ * Piirtää saaret ruudulle
+ */
 public class Saaret {
     private SaariKartta saaret;
-    
+
     public Saaret(SaariKartta saaret) {
         this.saaret = saaret;
     }
