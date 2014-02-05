@@ -3,6 +3,7 @@ package riku.hashiwokakero.ui;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Point;
 
 import riku.hashiwokakero.domain.Silta;
 
@@ -26,11 +27,8 @@ public class Sillat {
         g2.setColor(Color.white);
         
         for (Silta s : sillat.getSillat()) {
-            int kx1 = (800 / 2) + (s.lahto.x * 36);
-            int ky1 = (600 / 2) + (s.lahto.y * 36);
-            
-            int kx2 = (800 / 2) + (s.loppu.x * 36);
-            int ky2 = (600 / 2) + (s.loppu.y * 36);
+            Point lahto = Util.ruudulle(s.lahto.x, s.lahto.y);
+            Point loppu = Util.ruudulle(s.loppu.x, s.loppu.y);
             
             if (s.onTupla()) {
                 int offsetX, offsetY;
@@ -42,13 +40,13 @@ public class Sillat {
                     offsetY = 6;
                 }
 
-                g2.drawLine(kx1 + offsetX, ky1 + offsetY,
-                        kx2 + offsetX, ky2 + offsetY);
+                g2.drawLine(lahto.x + offsetX, lahto.y + offsetY,
+                        loppu.x + offsetX, loppu.y + offsetY);
 
-                g2.drawLine(kx1 - offsetX, ky1 - offsetY,
-                        kx2 - offsetX, ky2 - offsetY);
+                g2.drawLine(lahto.x - offsetX, lahto.y - offsetY,
+                        loppu.x - offsetX, loppu.y - offsetY);
             } else {
-                g2.drawLine(kx1, ky1, kx2, ky2);
+                g2.drawLine(lahto.x, lahto.y, loppu.x, loppu.y);
             }
         }
     }
