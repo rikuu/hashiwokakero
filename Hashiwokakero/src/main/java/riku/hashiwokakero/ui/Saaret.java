@@ -9,7 +9,7 @@ import riku.hashiwokakero.domain.Saari;
 import riku.hashiwokakero.logiikka.SaariKartta;
 
 /**
- * Piirtää saaret ruudulle
+ * Piirtää saaret ruudulle.
  */
 public class Saaret {
     private SaariKartta saaret;
@@ -30,16 +30,28 @@ public class Saaret {
         new Color(255, 255, 255),
         new Color(255, 255, 255)
     };
-
+    
+    private static final int puolSaari = Util.saarenKoko / 2;
+    
+    private static final int isompiSaari =
+            (int) ((4.0 * Util.saarenKoko) / 3.0);
+    private static final int puolIsompi = isompiSaari / 2;
+    
+    /**
+     * Piirtää kaikki saaret ruudulle.
+     * @param g2 
+     */
     public void piirra(Graphics2D g2) {        
         for (Saari saari : saaret.getSaaret()) {
             Point rsaari = Util.ruudulle(saari.x, saari.y);
             
             g2.setColor(Util.puolitaAlfa(VARIT[saari.getSillat()]));
-            g2.fillRect(rsaari.x - 24, rsaari.y - 24, 48, 48);
+            g2.fillRect(rsaari.x - puolIsompi, rsaari.y - puolIsompi,
+                    isompiSaari, isompiSaari);
             
             g2.setColor(VARIT[saari.getVaaditutSillat()]);
-            g2.fillRect(rsaari.x - 18, rsaari.y - 18, 36, 36);
+            g2.fillRect(rsaari.x - puolSaari, rsaari.y - puolSaari,
+                    Util.saarenKoko, Util.saarenKoko);
         }
     }
     

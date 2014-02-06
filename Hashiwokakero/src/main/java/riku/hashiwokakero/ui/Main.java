@@ -15,7 +15,7 @@ public class Main extends JFrame {
         
         setTitle("Hashiwokakero");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(800, 600);
+        setSize(Util.resx, Util.resy);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

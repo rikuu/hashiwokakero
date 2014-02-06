@@ -8,6 +8,16 @@ import java.awt.Point;
  */
 public class Util {
     /**
+     * Peli-ikkunan x- ja y-resoluutio
+     */
+    public static final int resx = 800, resy = 600;
+    
+    /**
+     * Saaren sivun pituus
+     */
+    public static final int saarenKoko = 36;
+    
+    /**
      * Puolittaa annetun värin alfan, i.e. tekee siitä läpinäkyvämmän
      * 
      * @param vari Muutettava väri
@@ -29,8 +39,8 @@ public class Util {
         // Ikkuna on 800x600
         // Saaret on 36x36
         
-        int rx = (800 / 2) + (x * 36);
-        int ry = (600 / 2) + (y * 36);
+        int rx = (resx / 2) + (x * saarenKoko);
+        int ry = (resy / 2) + (y * saarenKoko);
         
         return new Point(rx, ry);
     }
@@ -42,8 +52,8 @@ public class Util {
      * @return 
      */
     public static Point ruudukkoon(Point p) {
-        double dx = (double) (p.x - (800 / 2)) / 36.0;
-        double dy = (double) (p.y - (600 / 2)) / 36.0;
+        double dx = (double) (p.x - (resx / 2)) / saarenKoko;
+        double dy = (double) (p.y - (resy / 2)) / saarenKoko;
 
         int x = (int) Math.round(dx);
         int y = (int) Math.round(dy);
