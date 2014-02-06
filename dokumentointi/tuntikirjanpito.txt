@@ -9,3 +9,4 @@
 30.1.	1h	Ohjelmointia vielä ennen deadlinea
 3.2.	5h	Ohjelmointi
 5.2.	1h	Vähän JavaDoc
+6.2.	0.5h	Kaavioita
