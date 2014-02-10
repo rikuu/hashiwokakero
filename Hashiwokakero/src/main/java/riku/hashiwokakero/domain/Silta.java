@@ -31,11 +31,13 @@ public class Silta {
         return tupla;
     }
     
-    public void tuplaa() {        
-        tupla = true;
-        
-        lahto.lisaaSilta();
-        loppu.lisaaSilta();
+    public void tuplaa() {
+        if (!tupla) {
+            tupla = true;
+
+            lahto.lisaaSilta();
+            loppu.lisaaSilta();
+        }
     }
     
     public boolean yhdistaa(Saari a, Saari b) {        
