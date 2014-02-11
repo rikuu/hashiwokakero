@@ -16,24 +16,12 @@ public class PeliTest {
         s1 = peli.getSaaret().getSaaret().get(0);
         s2 = peli.getSaaret().getSaaret().get(1);
     }
-    
-    @Test
-    public void tyhjaRatkaistu() {
-        peli = new Peli(0);
-        
-        assertEquals(peli.ratkaistu(), true);
-    }
-    
+   
     @Test
     public void nollaSaartaOnTyhja() {
         peli = new Peli(0);
         
         assertEquals(peli.getSaaret().getSaaret().isEmpty(), true);
-    }
-    
-    @Test
-    public void kaksiSaartaRatkaistu() {
-        assertEquals(peli.ratkaistu(), false);
     }
     
     @Test
@@ -47,13 +35,6 @@ public class PeliTest {
         
         assertEquals(s1.getSillat(), 1);
     }
-    
-    /*@Test
-    public void eiRakennaHuonoaSiltaa() {
-        peli.uusiSilta(s1.x, s1.y, s2.x, s2.y);
-        
-        assertEquals(s1.getSillat(), 0);
-    }*/
     
     @Test
     public void loytaaSillan() {

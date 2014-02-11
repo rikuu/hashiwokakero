@@ -13,6 +13,15 @@ public class Peli {
     
     private Generaattori gen;
     
+    public interface RatkaisuTapahtuma {
+        public void peliRatkaistu();
+    }
+    
+    /**
+     * Kutsutaan kun peli on ratkaistu
+     */
+    private RatkaisuTapahtuma tapahtuma;
+    
     /**
      * Luo uuden pelin
      * 
@@ -27,13 +36,13 @@ public class Peli {
         uusiPeli(maara);
     }
 
+    /**
+     * Generoi saaret Generaattorilla
+     * @param maara saarten maara
+     */
     private void uusiPeli(int maara) {
         for (int i = 0; i < maara; i++)
             gen.uusiSaari();
-    }
-    
-    public boolean ratkaistu() {
-        return saaret.ratkaistu();
     }
     
     public SiltaKartta getSillat() {
@@ -42,6 +51,15 @@ public class Peli {
     
     public SaariKartta getSaaret() {
         return saaret;
+    }
+
+    /**
+     * Asettaa ratkaisun yhteydessä tapahtuvan callback-kutsun luokan
+     * 
+     * @param tapahtuma tapahtuma-luokka
+     */
+    public void setTapahtuma(RatkaisuTapahtuma tapahtuma) {
+        this.tapahtuma = tapahtuma;
     }
     
     /**
@@ -56,6 +74,15 @@ public class Peli {
     }
     
     /**
+     * Kutsuu callbackiä, jos ratkaistu.
+     */
+    private void tarkistaOnkoRatkaistu() {
+        if ((tapahtuma != null) && saaret.ratkaistu()) {
+            tapahtuma.peliRatkaistu();
+        }
+    }
+
+    /**
      * Luo uuden sillan kahden saaren välille
      * 
      * @param ax Saaren A x-koordinaatti
@@ -69,6 +96,8 @@ public class Peli {
         
         if (!saaret.saariaValissa(a, b))
             sillat.lisaa(a, b);
+        
+        tarkistaOnkoRatkaistu();
     }
     
     /**
@@ -83,5 +112,7 @@ public class Peli {
         if (silta != null) {
             sillat.poista(silta.lahto, silta.loppu);
         }
+        
+        tarkistaOnkoRatkaistu();
     }
 }
