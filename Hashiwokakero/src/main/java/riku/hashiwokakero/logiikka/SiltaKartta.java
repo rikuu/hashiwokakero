@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.domain.Saari;
 
-
 /**
  * Huolehtii silloista.
  */

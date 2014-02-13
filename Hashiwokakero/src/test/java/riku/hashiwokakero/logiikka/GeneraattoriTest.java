@@ -3,8 +3,8 @@ package riku.hashiwokakero.logiikka;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import riku.hashiwokakero.domain.Saari;
 
+import riku.hashiwokakero.domain.Saari;
 
 public class GeneraattoriTest {
     private SaariKartta saaret;

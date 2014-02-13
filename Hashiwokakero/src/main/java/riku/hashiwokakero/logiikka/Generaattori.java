@@ -1,6 +1,7 @@
 package riku.hashiwokakero.logiikka;
 
 import java.awt.Point;
+
 import riku.hashiwokakero.domain.Saari;
 
 /**
