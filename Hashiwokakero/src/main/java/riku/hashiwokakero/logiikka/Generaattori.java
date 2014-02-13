@@ -9,16 +9,12 @@ import riku.hashiwokakero.domain.Saari;
 public class Generaattori {
     private SaariKartta saaret;
     
-    private SiltaKartta ratkaistu;
-    
     // Pitää siirtää pois täältä, koskee pelkästään 800x600 ikkunaa
     private final static int reunax0 = -10, reunay0 = -8;
     private final static int reunax1 = 10, reunay1 = 8;
     
     public Generaattori(SaariKartta saaret) {
         this.saaret = saaret;
-        
-        ratkaistu = new SiltaKartta();
     }
     
     private Point arvoPaikka(Saari pohja) {
@@ -56,7 +52,7 @@ public class Generaattori {
         return saaret.getSaaret().get(i);
     }
     
-    private void lisaaSiltoja(Saari uusiSaari) {
+    /*private void lisaaSiltoja(Saari uusiSaari) {
         for (Saari s : saaret.getSaaret()) {
             if (uusiSaari.getVaaditutSillat() >= 4) {
                 return;
@@ -69,12 +65,12 @@ public class Generaattori {
             
             int siltoja = arvoSiltojenMaara();
             if (((s.getVaaditutSillat() + siltoja) <= 4)
-                    /*&& (Math.random() <= 0.4)*/) {
+                    && (Math.random() <= 0.4)) {
                 s.vaadiLisaa(siltoja);
                 uusiSaari.vaadiLisaa(siltoja);
             }
         }
-    }
+    }*/
     
     /**
      * Generoi uuden saaren
@@ -97,7 +93,7 @@ public class Generaattori {
         
         pohja.vaadiLisaa(siltoja);
         
-        //lisaaSiltoja(uusiSaari);
+        // lisaaSiltoja(uusiSaari);
         
         return uusiSaari;
     }
