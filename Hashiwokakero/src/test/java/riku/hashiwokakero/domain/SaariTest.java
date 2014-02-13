@@ -54,5 +54,24 @@ public class SaariTest {
         
         assertEquals(saari.getVaaditutSillat(), 1);
     }
+    
+    @Test
+    public void samaSaari() {
+        assertEquals(saari.equals(saari), true);
+    }
+    
+    @Test
+    public void eriSaari() {
+        assertEquals(saari.equals(new Saari(1, 1, 0)), false);
+    }
+    
+    @Test
+    public void samaPaikkaEriSaari() {
+        assertEquals(saari.equals(new Saari(0, 0, 0)), true);
+    }
+    
+    @Test
+    public void eiEdesSaari() {
+        assertEquals(saari.equals(1), false);
+    }
 }
-

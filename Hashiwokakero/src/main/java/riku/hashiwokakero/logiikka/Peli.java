@@ -98,8 +98,9 @@ public class Peli {
         Saari a = saaret.getSaari(ax, ay);
         Saari b = saaret.getSaari(bx, by);
         
-        if (!saaret.saariaValissa(a, b))
+        if ((a != null) && (b != null) && !saaret.saariaValissa(a, b)) {
             sillat.lisaa(a, b);
+        }
         
         tarkistaOnkoRatkaistu();
     }

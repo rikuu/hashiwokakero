@@ -8,10 +8,26 @@ import static org.junit.Assert.*;
 public class PeliTest {
     private Peli peli;    
     private Saari s1, s2;
+    private Tapahtuma t;
     
+    private class Tapahtuma implements Peli.RatkaisuTapahtuma {
+        public boolean kutsuttu;
+        
+        public Tapahtuma() {
+            kutsuttu = false;
+        }
+        
+        @Override
+        public void peliRatkaistu() {
+            kutsuttu = true;
+        }
+    }
+
     @Before
     public void setUp() {
         peli = new Peli(2);
+        
+        t = new Tapahtuma();
         
         s1 = peli.getSaaret().getSaaret().get(0);
         s2 = peli.getSaaret().getSaaret().get(1);
@@ -67,5 +83,39 @@ public class PeliTest {
         peli.poistaSilta(s1.x - 1, s1.y + 1);
         
         assertEquals(s1.getSillat(), 1);
+    }
+    
+    @Test
+    public void sillatEiNull() {
+        assertNotNull(peli.getSillat());
+    }
+    
+    @Test
+    public void eiKutsuTapahtumaa() {
+        peli.setTapahtuma(t);
+        
+        peli.poistaSilta(0, 0);
+        
+        assertFalse(t.kutsuttu);
+    }
+    
+    @Test
+    public void uusiSiltaKutsuuTapahtuman() {
+        peli = new Peli(0);
+        peli.setTapahtuma(t);
+        
+        peli.uusiSilta(0,0,0,0);
+        
+        assertTrue(t.kutsuttu);
+    }
+    
+    @Test
+    public void poistaSiltaKutsuuTapahtuman() {
+        peli = new Peli(0);
+        peli.setTapahtuma(t);
+        
+        peli.poistaSilta(0,0);
+        
+        assertTrue(t.kutsuttu);
     }
 }

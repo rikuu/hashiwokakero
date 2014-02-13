@@ -15,39 +15,86 @@ public class SaariKarttaTest {
     
     @Test
     public void tyhjaRatkaistu() {
-        assertEquals(saaret.ratkaistu(), true);
+        assertTrue(saaret.ratkaistu());
     }
     
     @Test
     public void yksiSaariRatkaistu() {
         saaret.lisaa(new Saari(0, 0, 0));
-        assertEquals(saaret.ratkaistu(), true);
+        assertTrue(saaret.ratkaistu());
     }
     
     @Test
-    public void saariOnValissa() {
+    public void kaksiSaartaEiRatkaistu() {
+        saaret.lisaa(new Saari(0, 2, 1));
+        saaret.lisaa(new Saari(0, 0, 1));
+        
+        assertFalse(saaret.ratkaistu());
+    }
+    
+    @Test
+    public void saariOnValissaYAkselilla() {
         Saari s1 = new Saari(-1, 0, 1);
-        Saari s2 = new Saari(0, 0, 2);
-        Saari s3 = new Saari(1, 0, 1);
+        Saari s2 = new Saari(0,  0, 2);
+        Saari s3 = new Saari(1,  0, 1);
         
         saaret.lisaa(s1);
         saaret.lisaa(s2);
         saaret.lisaa(s3);
 
-        assertEquals(saaret.saariaValissa(s1, s3), true);
+        assertTrue(saaret.saariaValissa(s1, s3));
     }
     
     @Test
-    public void saariaEiValissa() {
+    public void saariOnValissaXAkselilla() {
+        Saari s1 = new Saari(0,  1, 1);
+        Saari s2 = new Saari(0,  0, 2);
+        Saari s3 = new Saari(0, -1, 1);
+        
+        saaret.lisaa(s1);
+        saaret.lisaa(s2);
+        saaret.lisaa(s3);
+
+        assertTrue(saaret.saariaValissa(s1, s3));
+    }
+    
+    @Test
+    public void saariaEiValissaYAkselilla() {
         Saari s1 = new Saari(-1, 0, 1);
-        Saari s2 = new Saari(0, 1, 2);
-        Saari s3 = new Saari(1, 0, 1);
+        Saari s2 = new Saari(0,  1, 2);
+        Saari s3 = new Saari(1,  0, 1);
         
         saaret.lisaa(s1);
         saaret.lisaa(s2);
         saaret.lisaa(s3);
         
-        assertEquals(saaret.saariaValissa(s1, s3), false);
+        assertFalse(saaret.saariaValissa(s1, s3));
+    }
+    
+    @Test
+    public void saariaEiValissaXAkselilla() {
+        Saari s1 = new Saari(0,  1, 1);
+        Saari s2 = new Saari(1,  1, 2);
+        Saari s3 = new Saari(0, -1, 1);
+        
+        saaret.lisaa(s1);
+        saaret.lisaa(s2);
+        saaret.lisaa(s3);
+        
+        assertFalse(saaret.saariaValissa(s1, s3));
+    }
+    
+    @Test
+    public void saariaEiValissaJosHuonotSaaret() {
+        Saari s1 = new Saari(-1, 0, 1);
+        Saari s2 = new Saari(0,  0, 2);
+        Saari s3 = new Saari(1,  1, 1);
+        
+        saaret.lisaa(s1);
+        saaret.lisaa(s2);
+        saaret.lisaa(s3);
+        
+        assertFalse(saaret.saariaValissa(s1, s3));
     }
     
     @Test
@@ -63,6 +110,6 @@ public class SaariKarttaTest {
         Saari s1 = new Saari(0, 0, 0);
         saaret.lisaa(s1);
         
-        assertEquals(saaret.getSaari(1, 0), null);
+        assertNull(saaret.getSaari(1, 0));
     }
 }
