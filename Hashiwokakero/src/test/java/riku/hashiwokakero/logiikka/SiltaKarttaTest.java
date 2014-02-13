@@ -1,9 +1,10 @@
 package riku.hashiwokakero.logiikka;
 
-import riku.hashiwokakero.domain.Saari;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import riku.hashiwokakero.domain.Saari;
 
 public class SiltaKarttaTest {
     private SiltaKartta kartta;
@@ -18,8 +19,8 @@ public class SiltaKarttaTest {
     }
 
     private void saaretMaara(int maara) {
-        assertEquals(kartta.maara(a), maara);
-        assertEquals(kartta.maara(b), maara);
+        assertEquals(a.getSillat(), maara);
+        assertEquals(b.getSillat(), maara);
     } 
     
     @Test
@@ -81,7 +82,7 @@ public class SiltaKarttaTest {
         
         kartta.lisaa(a, c);
         
-        assertEquals(kartta.maara(c), 0);
+        assertEquals(c.getSillat(), 0);
         saaretMaara(0);
     }
 }

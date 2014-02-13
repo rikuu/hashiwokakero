@@ -17,6 +17,12 @@ public class Generaattori {
         this.saaret = saaret;
     }
     
+    /**
+     * Arpoo paikan, joka on joko x-, tai y-akselin suhteen kohtisuorassa
+     * annettuun saareen.
+     * @param pohja Saari josta liikutaan
+     * @return Piste ruudukolla
+     */
     private Point arvoPaikka(Saari pohja) {
         Point paikka = new Point(pohja.x, pohja.y);
 
@@ -36,10 +42,21 @@ public class Generaattori {
         return paikka;
     }
     
+    /**
+     * Arpoo luvun 1-2, 70% luvuista on 1
+     * @return arvottu luku
+     */
     private int arvoSiltojenMaara() {
-        return (Math.random() > 0.7) ? 2 : 1;
+        return (Math.random() >= 0.7) ? 2 : 1;
     }
     
+    /**
+     * Arpoo olemassa olevista saarista jonkun, jolle voi lisätä annetun
+     * määrän siltoja
+     * 
+     * @param siltoja kuinka monta siltaa tarvii lisätä
+     * @return Olemassa oleva Saari
+     */
     private Saari valitsePohja(int siltoja) {
         int i = (int)(Math.random() * (saaret.getSaaret().size() - 1));
         while ((saaret.getSaaret().get(i).getVaaditutSillat() + siltoja) > 4) {

@@ -36,9 +36,6 @@ public class Util {
      * @return 
      */
     public static Point ruudulle(int x, int y) {
-        // Ikkuna on 800x600
-        // Saaret on 36x36
-        
         int rx = (resx / 2) + (x * saarenKoko);
         int ry = (resy / 2) + (y * saarenKoko);
         

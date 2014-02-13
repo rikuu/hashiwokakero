@@ -13,16 +13,23 @@ import riku.hashiwokakero.logiikka.SiltaKartta;
  * Piirtää sillat ruudulle
  */
 public class Sillat {
+    /**
+     * Nykyisen pelin SiltaKartta
+     */
     private final SiltaKartta sillat;
     
+    /**
+     * @param s Siltakartta nykyiselle pelille
+     */
     public Sillat(SiltaKartta s) {
         sillat = s;
     }
     
-    public void piirra(Graphics2D g2) {
-        // Onko varmasti looginen omana luokkana;
-        // käyttää pelkästään yhtä funktiota.
-        
+    /**
+     * Piirtää kaikki sillat.
+     * @param g2 
+     */
+    public void piirra(Graphics2D g2) {        
         g2.setStroke(new BasicStroke(6));
         g2.setColor(Color.white);
         
@@ -31,6 +38,8 @@ public class Sillat {
             Point loppu = Util.ruudulle(s.loppu.x, s.loppu.y);
             
             if (s.onTupla()) {
+                // Piirtää kaksi siltaa vierekkäin, jos on tupla
+                
                 int offsetX, offsetY;
                 if (s.lahto.x == s.loppu.x) {
                     offsetX = 6;

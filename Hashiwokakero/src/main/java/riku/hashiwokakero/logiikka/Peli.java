@@ -8,17 +8,20 @@ import riku.hashiwokakero.domain.Saari;
  * pelilogiikkaa hallitseville luokille.
  */
 public class Peli {
-    private SaariKartta saaret;
-    private SiltaKartta sillat;
+    private final SaariKartta saaret;
+    private final SiltaKartta sillat;
     
-    private Generaattori gen;
+    private final Generaattori gen;
     
     public interface RatkaisuTapahtuma {
+        /**
+        * Kutsutaan kun peli on ratkaistu
+        */
         public void peliRatkaistu();
     }
     
     /**
-     * Kutsutaan kun peli on ratkaistu
+     * Kutsutaan pelin ratkaisun yhteydessä, jos ei ole null
      */
     private RatkaisuTapahtuma tapahtuma;
     
@@ -38,6 +41,7 @@ public class Peli {
 
     /**
      * Generoi saaret Generaattorilla
+     * 
      * @param maara saarten maara
      */
     private void uusiPeli(int maara) {

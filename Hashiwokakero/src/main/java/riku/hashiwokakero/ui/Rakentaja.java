@@ -17,17 +17,34 @@ import riku.hashiwokakero.logiikka.Peli;
  * tai purkaa siltoja.
  */
 public class Rakentaja implements MouseListener, MouseMotionListener {
+    /**
+     * Nykyinen peli
+     */
     private Peli peli;
     
+    /**
+     * True, jos lähtöpaikka uudelle sillalle on valittu.
+     */
     private boolean raahaus;
+    
+    /**
+     * Lahtopiste ja hiiren nykyinen paikka
+     */
     private Point lahto, hiiri;
 
+    /**
+     * @param peli Nykyinen peli
+     */
     public Rakentaja(Peli peli) {
         this.peli = peli;
         
         raahaus = false;
     }
     
+    /**
+     * Piirtää viivan lähdöstä hiiren nykyiseen paikkaan.
+     * @param g2 
+     */
     public void piirra(Graphics g2) {
         if (raahaus) {
             g2.setColor(Color.white);

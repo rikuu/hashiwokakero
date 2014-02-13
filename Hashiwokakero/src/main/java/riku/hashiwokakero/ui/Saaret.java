@@ -14,21 +14,24 @@ import riku.hashiwokakero.logiikka.SaariKartta;
 public class Saaret {
     private SaariKartta saaret;
 
+    /**
+     * @param saaret Pelin käytössä oleva SaariKartta
+     */
     public Saaret(SaariKartta saaret) {
         this.saaret = saaret;
     }
     
+    /**
+     * Pari nättiä väriä saarten piirtämiseen.
+     * Indeksi menee siltojen määrän mukaan.
+     */
     private static final Color[] VARIT = {
         new Color(0, 0, 0),
         
         new Color(70, 137, 102),
         new Color(255, 240, 165),
         new Color(255, 176, 59),
-        new Color(182, 73, 38),
-        
-        new Color(255, 255, 255),
-        new Color(255, 255, 255),
-        new Color(255, 255, 255)
+        new Color(182, 73, 38)
     };
     
     private static final int puolSaari = Util.saarenKoko / 2;
@@ -38,7 +41,8 @@ public class Saaret {
     private static final int puolIsompi = isompiSaari / 2;
     
     /**
-     * Piirtää kaikki saaret ruudulle.
+     * Piirtää kaikki saaret ruudulle. Joka saaren takana on isompi neliö, joka
+     * on myös läpinäkyvämpi.
      * @param g2 
      */
     public void piirra(Graphics2D g2) {        

@@ -4,10 +4,15 @@ package riku.hashiwokakero.domain;
  * Edustaa saaria.
  */
 public class Saari {
+    /**
+     * Saaren koordinaatit
+     */
     public final int x, y;
     
-    private int vaaditutSillat;
-    private int sillat;
+    /**
+     * Siltojen määrä
+     */
+    private int sillat, vaaditutSillat;
     
     public Saari(int x, int y, int siltoja) {
         vaaditutSillat = siltoja;
@@ -18,10 +23,17 @@ public class Saari {
         sillat = 0;
     }
     
+    /**
+     * Nostaa siltojen määrän laskuria.
+     */
     public void lisaaSilta() {
         sillat++;
     }
     
+    /**
+     * Vähentää siltojen määrän laskuria yhdellä.
+     * Älä pliis kutsu jos et oo SaariKartta
+     */
     public void poistaSilta() {
         sillat = Math.max(sillat - 1, 0);
     }
@@ -34,10 +46,19 @@ public class Saari {
         return vaaditutSillat;
     }
     
+    /**
+     * Lisää vaadittuihin siltoihin x:n verran lisää
+     * @param x haluttu määrä vaatia lisää siltoja
+     */
     public void vaadiLisaa(int x) {
         vaaditutSillat += x;
     }
     
+    /**
+     * Tarkistaa onko siltoja tarpeeksi.
+     * 
+     * @return true jos siltoja on yhtä paljon kun vaaditaan
+     */
     public boolean tarpeeksiSiltoja() {
         return (vaaditutSillat == sillat);
     }

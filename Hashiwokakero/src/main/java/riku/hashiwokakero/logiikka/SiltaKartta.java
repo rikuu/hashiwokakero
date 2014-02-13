@@ -1,19 +1,33 @@
 package riku.hashiwokakero.logiikka;
 
+import java.util.ArrayList;
+
 import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.domain.Saari;
-import java.util.ArrayList;
+
 
 /**
  * Huolehtii silloista.
  */
 public class SiltaKartta {
+    /**
+     * Lista kaikista silloista
+     */
     private ArrayList<Silta> sillat;
     
+    /**
+     * Luo uuden SiltaKartan
+     */
     public SiltaKartta() {
         sillat = new ArrayList<>();
     }
     
+    /**
+     * Lisää sillan karttaan, jos a != b ja ovat kohtisuorassa.
+     * Tuplaa sillan jos silta on jo olemssa.
+     * @param a Saari a
+     * @param b Saari b
+     */
     public void lisaa(Saari a, Saari b) {
         if (((a.x != b.x) && (a.y != b.y)) || (a == b))
             return;
@@ -28,6 +42,11 @@ public class SiltaKartta {
         sillat.add(new Silta(a, b));
     }
     
+    /**
+     * Poistaa sillat, jotka yhdistävät saaret a ja b.
+     * @param a Saari a
+     * @param b Saari b
+     */
     public void poista(Saari a, Saari b) {
         for (Silta s : sillat) {
             if (s.yhdistaa(a, b)) {
@@ -39,21 +58,19 @@ public class SiltaKartta {
         }
     }
     
-    public int maara(Saari saari) {
-        int summa = 0;
-        
-        for (Silta s : sillat) {
-            if (s.yhdistaa(saari))
-                summa += s.onTupla() ? 2 : 1;
-        }
-        
-        return summa;
-    }
-    
     public ArrayList<Silta> getSillat() {
         return sillat;
     }
     
+    /**
+     * Etsii sillan, joka on koordinaattien alla.
+     * Silta on koordinaattien alla, jos sen yhdistävät saaret ovat
+     * joko y- tai x-akselilla, ylä- ja alapuolella.
+     * 
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     * @return haluttu silta
+     */
     public Silta getSilta(int x, int y) {
         for (Silta s : sillat) {
             if (s.lahto.x == s.loppu.x) {

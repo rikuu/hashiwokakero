@@ -14,10 +14,14 @@ import riku.hashiwokakero.logiikka.Peli;
  * @see Peli
  */
 public class PeliLauta extends JPanel {
-    private Sillat sillasto;
-    private Saaret saaristo;    
-    private Rakentaja rakentaja;
+    private final Sillat sillasto;
+    private final Saaret saaristo;
+    private final Rakentaja rakentaja;
     
+    /**
+     * Luo uuden PeliLaudan
+     * @param peli peli, jolle lauta luodaan
+     */
     public PeliLauta(Peli peli) {
         sillasto = new Sillat(peli.getSillat());
         saaristo = new Saaret(peli.getSaaret());
