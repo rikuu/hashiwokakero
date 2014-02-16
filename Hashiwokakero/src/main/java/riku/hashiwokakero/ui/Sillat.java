@@ -28,14 +28,18 @@ public class Sillat {
     /**
      * Piirtää kaikki sillat.
      * @param g2 
+     * @param animaatioOffset 
      */
-    public void piirra(Graphics2D g2) {        
+    public void piirra(Graphics2D g2, int animaatioOffset) {
         g2.setStroke(new BasicStroke(6));
         g2.setColor(Color.white);
         
         for (Silta s : sillat.getSillat()) {
             Point lahto = Util.ruudulle(s.lahto.x, s.lahto.y);
             Point loppu = Util.ruudulle(s.loppu.x, s.loppu.y);
+            
+            lahto.x += animaatioOffset;
+            loppu.x += animaatioOffset;
             
             if (s.onTupla()) {
                 // Piirtää kaksi siltaa vierekkäin, jos on tupla

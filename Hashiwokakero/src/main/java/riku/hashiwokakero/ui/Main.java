@@ -9,6 +9,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 import riku.hashiwokakero.logiikka.Peli;
 
@@ -43,8 +44,9 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         ActionListener sulkuKuuntelija = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispatchEvent(new WindowEvent(
-                        frame, WindowEvent.WINDOW_CLOSING)); 
+                peliRatkaistu();
+                //frame.dispatchEvent(new WindowEvent(
+                //        frame, WindowEvent.WINDOW_CLOSING)); 
             }
         };
 
@@ -53,15 +55,54 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
                 JComponent.WHEN_IN_FOCUSED_WINDOW);
     }
     
+    private class Animoija implements ActionListener {
+        private int i;
+        private final PeliLauta vanhaLauta;
+        
+        public Animoija(PeliLauta uusLauta) {
+            i = 0;
+            this.vanhaLauta = uusLauta;
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (i < 100) {
+                vanhaLauta.repaint();                
+            } else if (vanhaLauta != null) {
+                lauta.repaint();
+            }
+            
+            if (i >= 200) {
+                if (vanhaLauta != null) {
+                    frame.getContentPane().remove(vanhaLauta);
+                }
+                
+                frame.getContentPane().invalidate();
+                frame.getContentPane().validate();
+            } else {
+                i += 1;
+                
+                ((Timer)e.getSource()).restart();
+            }
+        }
+    }
+    
     @Override
     public void peliRatkaistu() {
-        if (lauta != null)
-            frame.getContentPane().remove(lauta);
+        if (lauta != null) {
+            lauta.animoiUlos();
+
+            Timer timer = new Timer(1, new Animoija(lauta));
+            timer.setRepeats(true);
+            timer.start();
+        }
         
         Peli peli = new Peli(10);
         peli.setTapahtuma(this);
         
         lauta = new PeliLauta(peli);
+        lauta.animoiSisaan();
+        
         frame.add(lauta);
         
         frame.getContentPane().invalidate();

@@ -18,6 +18,8 @@ public class PeliLauta extends JPanel {
     private final Saaret saaristo;
     private final Rakentaja rakentaja;
     
+    private Animaatio animaatio;
+    
     /**
      * Luo uuden PeliLaudan
      * @param peli peli, jolle lauta luodaan
@@ -33,14 +35,29 @@ public class PeliLauta extends JPanel {
         setBackground(Color.black);
         setDoubleBuffered(true);
     }
+    
+    public void animoiSisaan() {
+        animaatio = new Animaatio(Util.resx, 0);
+    }
+    
+    public void animoiUlos() {
+        animaatio = new Animaatio(0, -Util.resx);
+    }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         
-        sillasto.piirra(g2);
+        animaatio.step();        
+        int offset = animaatio.getOffset();
+        
+        if (offset > 0)
+            System.out.println(offset);
+        
+        sillasto.piirra(g2, offset);
         rakentaja.piirra(g2);
-        saaristo.piirra(g2);
+        saaristo.piirra(g2, offset);
     }
 }
+
