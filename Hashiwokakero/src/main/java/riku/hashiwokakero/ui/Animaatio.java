@@ -16,7 +16,7 @@ public class Animaatio {
             return (int) (alku + (loppu - alku) * aika);
         }
         
-        return 0;
+        return loppu;
     }
     
     public void step() {

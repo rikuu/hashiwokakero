@@ -79,7 +79,7 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
                 frame.validate();
             }
             
-            if (i < 100) {
+            if ((i < 100) && (vanhaLauta != null)) {
                 vanhaLauta.repaint();                
             } else {
                 lauta.repaint();
@@ -107,14 +107,9 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         lauta = new PeliLauta(peli);
         lauta.animoiSisaan();
         
-        Timer timer = new Timer(1, new Animoija(vanha));
+        Timer timer = new Timer(10, new Animoija(vanha));
         timer.setRepeats(true);
         timer.start();
-
-        //frame.add(lauta);
-        
-        //frame.getContentPane().invalidate();
-        //frame.getContentPane().validate();
     }
     
     public static void main(String[] args) {
