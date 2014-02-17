@@ -66,20 +66,26 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         
         @Override
         public void actionPerformed(ActionEvent e) {
+            if (i == 100) {
+                if (vanhaLauta != null) {
+                    frame.remove(vanhaLauta);
+                }
+                
+                frame.add(lauta);
+                
+                lauta.repaint();
+                
+                frame.invalidate();
+                frame.validate();
+            }
+            
             if (i < 100) {
                 vanhaLauta.repaint();                
-            } else if (vanhaLauta != null) {
+            } else {
                 lauta.repaint();
             }
             
-            if (i >= 200) {
-                if (vanhaLauta != null) {
-                    frame.getContentPane().remove(vanhaLauta);
-                }
-                
-                frame.getContentPane().invalidate();
-                frame.getContentPane().validate();
-            } else {
+            if (i < 200) {
                 i += 1;
                 
                 ((Timer)e.getSource()).restart();
@@ -89,12 +95,10 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
     
     @Override
     public void peliRatkaistu() {
+        PeliLauta vanha = lauta;
+        
         if (lauta != null) {
             lauta.animoiUlos();
-
-            Timer timer = new Timer(1, new Animoija(lauta));
-            timer.setRepeats(true);
-            timer.start();
         }
         
         Peli peli = new Peli(10);
@@ -103,10 +107,14 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         lauta = new PeliLauta(peli);
         lauta.animoiSisaan();
         
-        frame.add(lauta);
+        Timer timer = new Timer(1, new Animoija(vanha));
+        timer.setRepeats(true);
+        timer.start();
+
+        //frame.add(lauta);
         
-        frame.getContentPane().invalidate();
-        frame.getContentPane().validate();
+        //frame.getContentPane().invalidate();
+        //frame.getContentPane().validate();
     }
     
     public static void main(String[] args) {

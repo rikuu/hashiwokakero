@@ -52,9 +52,6 @@ public class PeliLauta extends JPanel {
         animaatio.step();        
         int offset = animaatio.getOffset();
         
-        if (offset > 0)
-            System.out.println(offset);
-        
         sillasto.piirra(g2, offset);
         rakentaja.piirra(g2);
         saaristo.piirra(g2, offset);
