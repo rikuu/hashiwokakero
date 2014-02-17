@@ -45,12 +45,15 @@ public class PeliLauta extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void paint(Graphics g) {
+        super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         
-        animaatio.step();        
-        int offset = animaatio.getOffset();
+        int offset = 0;
+        if (animaatio != null) {
+            animaatio.step();
+            offset = animaatio.getOffset();
+        }
         
         sillasto.piirra(g2, offset);
         rakentaja.piirra(g2);

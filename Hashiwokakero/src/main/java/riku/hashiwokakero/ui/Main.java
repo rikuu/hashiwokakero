@@ -32,9 +32,15 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         
         lisaaSulkuKuuntelija();
         
-        // On tää jossain mielessä tälleen ratkaistu
-        lauta = null;
-        peliRatkaistu();
+        uusiPeli();
+        frame.add(lauta);
+    }
+    
+    private void uusiPeli() {
+        Peli peli = new Peli(10);
+        peli.setTapahtuma(this);
+        
+        lauta = new PeliLauta(peli);
     }
     
     /**
@@ -44,9 +50,8 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         ActionListener sulkuKuuntelija = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                peliRatkaistu();
-                //frame.dispatchEvent(new WindowEvent(
-                //        frame, WindowEvent.WINDOW_CLOSING)); 
+                frame.dispatchEvent(new WindowEvent(
+                        frame, WindowEvent.WINDOW_CLOSING)); 
             }
         };
 
@@ -72,8 +77,6 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
                 }
                 
                 frame.add(lauta);
-                
-                lauta.repaint();
                 
                 frame.invalidate();
                 frame.validate();
@@ -101,10 +104,7 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
             lauta.animoiUlos();
         }
         
-        Peli peli = new Peli(10);
-        peli.setTapahtuma(this);
-        
-        lauta = new PeliLauta(peli);
+        uusiPeli();
         lauta.animoiSisaan();
         
         Timer timer = new Timer(10, new Animoija(vanha));
