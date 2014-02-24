@@ -80,6 +80,4 @@ public class SaarienPiirtaja {
                     Util.saarenKoko, Util.saarenKoko);
         }
     }
-    
-    
 }
