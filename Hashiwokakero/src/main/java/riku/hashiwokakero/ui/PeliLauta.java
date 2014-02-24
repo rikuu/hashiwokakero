@@ -14,8 +14,19 @@ import riku.hashiwokakero.logiikka.Peli;
  * @see Peli
  */
 public class PeliLauta extends JPanel {
+    /**
+     * SiltojenPiirtaja piirtamaan siltoja
+     */
     private final SiltojenPiirtaja siltojenPiirtaja;
+    
+    /**
+     * SaarienPiirtaja piirtamaan siltoja
+     */
     private final SaarienPiirtaja saarienPiirtaja;
+    
+    /**
+     * SiltojenRakentaja rakentamaan siltoja
+     */
     private final SiltojenRakentaja siltojenRakentaja;
     
     /**

@@ -12,6 +12,9 @@ import riku.hashiwokakero.logiikka.SaariKartta;
  * Piirtää saaret ruudulle.
  */
 public class SaarienPiirtaja {
+    /**
+     * Tarvitsee että tietää mitä piirtää
+     */
     private final SaariKartta saaret;
     
     /**

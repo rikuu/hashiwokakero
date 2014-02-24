@@ -9,9 +9,19 @@ import riku.hashiwokakero.domain.Saari;
  * Sisältää kokonaisena yhden täyden pelin.
  */
 public class Peli {
+    /**
+     * SaariKartta kartoittamaan saaret
+     */
     private final SaariKartta saaret;
+    
+    /**
+     * SiltaKartta kartoittamaan sillat
+     */
     private final SiltaKartta sillat;
     
+    /**
+     * Generaattori generoimaan saaria
+     */
     private final Generaattori gen;
     
     /**
