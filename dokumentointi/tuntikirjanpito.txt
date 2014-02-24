@@ -12,3 +12,6 @@
 6.2.	0.5h	Kaavioita
 12.2	2h	Ohjelmointia
 13.2.	3h	Testejä, JavaDoc ja uus sekvenssikaavio. Kaikkee hauskaa.
+17.2.	1h	Ohjelmointia; siistei animaatioita
+18.2.	2h	Animaatioiden korjailua
+14.2.	4h	Ohjelmointia, hienosäätöä

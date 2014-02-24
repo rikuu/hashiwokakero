@@ -1,4 +1,4 @@
-Aihe: Hashiwokakero-peli
+﻿Aihe: Hashiwokakero-peli
 
 Hashiwokakero on joku outo japanilainen puzzle-peli, jossa
 yhdistetään saaria silloilla, jotka asettuvat pysty- ja
@@ -14,5 +14,5 @@ http://en.wikipedia.org/wiki/Hashiwokakero
 Käyttäjät: Pelaaja
 
 Toiminnot:
-	- Sillan rakentaminen
-	- 
+	- Siltojen rakentaminen
+	- Siltojen poistaminen
