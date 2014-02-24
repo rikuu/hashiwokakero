@@ -73,7 +73,7 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         // Kuuluu kasvattaa saarien määrää mielyttävästi.
         // Tää on melko mielivaltanen päätös.
         // Silti mielyttävä.
-        saaria = Math.min((int) Math.round(saaria * 1.3), 10);
+        saaria = Math.min((int) Math.round(saaria * 1.3), 14);
     }
     
     /**
