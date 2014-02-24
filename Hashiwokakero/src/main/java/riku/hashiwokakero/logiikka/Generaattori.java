@@ -8,14 +8,30 @@ import riku.hashiwokakero.domain.Saari;
  * Generoi pelikenttiä.
  */
 public class Generaattori {
-    private SaariKartta saaret;
+    /**
+     * SaariKartta, johon saaret lisätään.
+     */
+    private final SaariKartta saaret;
     
-    // Pitää siirtää pois täältä, koskee pelkästään 800x600 ikkunaa
-    private final static int reunax0 = -10, reunay0 = -8;
-    private final static int reunax1 = 10, reunay1 = 8;
+    /**
+     * Pienin ja suurin hyväksyttävä koordinaatti. Toimivat myös osittain, ts.
+     * uusi koordinaatti hylätään, jos x- tai y-koordinaatti arvotussa menee
+     * kumpi vaan yli maksimiKoordinaatin tai alle minimiKoordinaatin.
+     */
+    private final Point maksimiKoordinaatti, minimiKoordinaatti;
     
-    public Generaattori(SaariKartta saaret) {
+    /**
+     * Luo uuden Generaattorin
+     * @param saaret SaariKartta, johon saaret lisätään.
+     * @param maksimiKoordinaatti Suurin hyväksyttävä koordinaatti
+     * @param minimiKoordinaatti Pienin hyväksyttävä koordinaatti
+     */
+    public Generaattori(SaariKartta saaret, Point maksimiKoordinaatti,
+            Point minimiKoordinaatti) {
         this.saaret = saaret;
+        
+        this.maksimiKoordinaatti = maksimiKoordinaatti;
+        this.minimiKoordinaatti = minimiKoordinaatti;
     }
     
     /**
@@ -34,10 +50,11 @@ public class Generaattori {
             paikka.y += p;
         }
         
-        // Huono, mahoton pelata, arvo uus
-        if ((paikka.x <= reunax0) || (paikka.x >= reunax1) ||
-            (paikka.y <= reunay0) || (paikka.y >= reunay1)) {
-                return arvoPaikka(pohja);
+        if ((paikka.x <= minimiKoordinaatti.x) ||
+                (paikka.x >= maksimiKoordinaatti.x) ||
+                (paikka.y <= minimiKoordinaatti.y) ||
+                (paikka.y >= maksimiKoordinaatti.y)) {
+            return arvoPaikka(pohja);
         }
         
         return paikka;

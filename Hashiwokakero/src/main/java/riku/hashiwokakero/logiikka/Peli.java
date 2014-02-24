@@ -1,5 +1,6 @@
 package riku.hashiwokakero.logiikka;
 
+import java.awt.Point;
 import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.domain.Saari;
 
@@ -33,12 +34,14 @@ public class Peli {
      * Luo uuden pelin
      * 
      * @param maara Saarien määrä uudessa pelissä
+     * @param max Maksimikoordinaatit Generaattorille
+     * @param min Minimikoordinaatit Generaattorille
      */
-    public Peli(int maara) {
+    public Peli(int maara, Point max, Point min) {
         sillat = new SiltaKartta();
         saaret = new SaariKartta();
         
-        gen = new Generaattori(saaret);
+        gen = new Generaattori(saaret, max, min);
         
         uusiPeli(maara);
     }

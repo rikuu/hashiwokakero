@@ -1,5 +1,6 @@
 package riku.hashiwokakero.ui;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,6 +34,17 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
      */
     private int saaria = 3;
     
+    /**
+     * Maksimikoordinaatit pelin Generaattorille.
+     */
+    private final static Point max = Util.ruudukkoon(
+            new Point(Util.resoluutioX, Util.resoluutioY));
+    
+    /**
+     * Minimikoordinaatit pelin Generaattorille.
+     */
+    private final static Point min = Util.ruudukkoon(new Point(0, 0));
+    
     @Override
     public void run() {
         frame = new JFrame("Hashiwokakero");
@@ -52,7 +64,7 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
      * Luo uuden Pelin, PeliLaudan ja lisää sen ruudulle.
      */
     private void uusiPeli() {
-        Peli peli = new Peli(saaria);
+        Peli peli = new Peli(saaria, max, min);
         peli.setTapahtuma(this);
         
         lauta = new PeliLauta(peli);

@@ -1,14 +1,21 @@
 package riku.hashiwokakero.logiikka;
 
+import java.awt.Point;
 import riku.hashiwokakero.domain.Saari;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PeliTest {
-    private Peli peli;    
+    private Peli peli; 
     private Saari s1, s2;
     private Tapahtuma t;
+    
+    private final static Point max = new Point(Integer.MAX_VALUE,
+            Integer.MAX_VALUE);
+    
+    private final static Point min = new Point(Integer.MIN_VALUE,
+            Integer.MIN_VALUE);
     
     private class Tapahtuma implements Peli.RatkaisuTapahtuma {
         public boolean kutsuttu;
@@ -25,7 +32,7 @@ public class PeliTest {
 
     @Before
     public void setUp() {
-        peli = new Peli(2);
+        peli = new Peli(2, max, min);
         
         t = new Tapahtuma();
         
@@ -35,7 +42,7 @@ public class PeliTest {
    
     @Test
     public void nollaSaartaOnTyhja() {
-        peli = new Peli(0);
+        peli = new Peli(0, max, min);
         
         assertEquals(peli.getSaaret().getSaaret().isEmpty(), true);
     }
@@ -59,7 +66,7 @@ public class PeliTest {
     
     @Test
     public void eiLoydaSiltaa() {
-        peli = new Peli(1);
+        peli = new Peli(1, max, min);
         
         assertEquals(peli.onSaari(1, 1), false);
     }
@@ -101,7 +108,7 @@ public class PeliTest {
     
     @Test
     public void uusiSiltaKutsuuTapahtuman() {
-        peli = new Peli(0);
+        peli = new Peli(0, max, min);
         peli.setTapahtuma(t);
         
         peli.uusiSilta(0,0,0,0);
@@ -111,7 +118,7 @@ public class PeliTest {
     
     @Test
     public void poistaSiltaKutsuuTapahtuman() {
-        peli = new Peli(0);
+        peli = new Peli(0, max, min);
         peli.setTapahtuma(t);
         
         peli.poistaSilta(0,0);

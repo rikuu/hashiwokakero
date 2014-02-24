@@ -1,6 +1,6 @@
 package riku.hashiwokakero.logiikka;
 
-import java.util.ArrayList;
+import java.awt.Point;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -14,7 +14,10 @@ public class GeneraattoriTest {
     @Before
     public void setUp() {
         saaret = new SaariKartta();
-        gen = new Generaattori(saaret);
+        
+        gen = new Generaattori(saaret,
+                new Point(Integer.MAX_VALUE, Integer.MAX_VALUE),
+                new Point(Integer.MIN_VALUE, Integer.MIN_VALUE));
     }
     
     @Test
@@ -44,7 +47,7 @@ public class GeneraattoriTest {
         
         int l[] = {0, 0};
                 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 100; i++) {
             Saari s = gen.uusiSaari();
             saaret.lisaa(s);
             
