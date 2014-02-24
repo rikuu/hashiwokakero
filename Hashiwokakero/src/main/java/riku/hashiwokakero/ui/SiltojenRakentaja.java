@@ -1,7 +1,7 @@
 package riku.hashiwokakero.ui;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 
 import java.awt.event.MouseEvent;
@@ -45,7 +45,7 @@ public class SiltojenRakentaja implements MouseListener, MouseMotionListener {
      * Piirtää viivan lähdöstä hiiren nykyiseen paikkaan.
      * @param g2 
      */
-    public void piirra(Graphics g2) {
+    public void piirra(Graphics2D g2) {
         if (raahaus) {
             g2.setColor(Color.white);
             g2.drawLine(lahto.x, lahto.y, hiiri.x, hiiri.y);

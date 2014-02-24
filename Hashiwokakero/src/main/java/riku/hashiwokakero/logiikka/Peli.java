@@ -79,7 +79,7 @@ public class Peli {
     /**
      * Asettaa ratkaisun yhteydessä tapahtuvan tapahtuma-kutsun "suunnan".
      * 
-     * @param tapahtuma tapahtuma-luokka
+     * @param tapahtuma luokka, joka toteuttaa RatkaisuTapahtuma interfacen
      */
     public void setTapahtuma(RatkaisuTapahtuma tapahtuma) {
         this.tapahtuma = tapahtuma;
@@ -90,7 +90,7 @@ public class Peli {
      * 
      * @param x x-koordinaatti
      * @param y y-koordinaatti
-     * @return 
+     * @return True, jos koordinaattien kohdalla on saari
      */
     public boolean onSaari(int x, int y) {
         return (saaret.getSaari(x, y) != null);

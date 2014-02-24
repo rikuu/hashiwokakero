@@ -31,9 +31,9 @@ public class Util {
     /**
      * Muuttaa koordinaatit ruudukosta pikselimuotoon
      * 
-     * @param x
-     * @param y
-     * @return 
+     * @param x x-koordinaatti ruudukolta
+     * @param y y-koordinaatti ruudukolta
+     * @return koordinaatit Pointissa
      */
     public static Point ruudulle(int x, int y) {
         int rx = (resoluutioX / 2) + (x * saarenKoko);
@@ -45,8 +45,8 @@ public class Util {
     /**
      * Muuttaa koordinaatit pikseleistä ruudukkomuotoon
      * 
-     * @param p
-     * @return 
+     * @param p koordinaatit ruudulta Pointin sisällä
+     * @return koordinaatit ruudukolla
      */
     public static Point ruudukkoon(Point p) {
         double dx = (double) (p.x - (resoluutioX / 2)) / saarenKoko;
