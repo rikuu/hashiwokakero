@@ -15,7 +15,7 @@ public class Saari {
     private int sillat, vaaditutSillat;
     
     public Saari(int x, int y, int siltoja) {
-        vaaditutSillat = siltoja;
+        vaaditutSillat = Math.max(siltoja, 0);
         
         this.x = x;
         this.y = y;

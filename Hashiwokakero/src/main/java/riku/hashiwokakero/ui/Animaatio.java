@@ -28,7 +28,7 @@ public class Animaatio {
     }
     
     /**
-     * Lineaarisesti interpoloi animaation paikan nykyisen hetken.
+     * Lineaarisesti interpoloi animaation paikan nykyisellä hetkellä.
      * @return Animaation nykyinen arvo
      */
     public int getOffset() {

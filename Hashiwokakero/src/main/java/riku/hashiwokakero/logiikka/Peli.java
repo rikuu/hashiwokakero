@@ -4,8 +4,8 @@ import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.domain.Saari;
 
 /**
- * Toimii jonkinlaisena vetoketjuna muille
- * pelilogiikkaa hallitseville luokille.
+ * Toimii jonkinlaisena vetoketjuna muille pelilogiikkaa hallitseville luokille.
+ * Sisältää kokonaisena yhden täyden pelin.
  */
 public class Peli {
     private final SaariKartta saaret;
@@ -13,6 +13,10 @@ public class Peli {
     
     private final Generaattori gen;
     
+    /**
+     * Interface, joka täytyy toteuttaa jos tahtoo että saa kutsun takaisin
+     * kun peli on ratkaistu.
+     */
     public interface RatkaisuTapahtuma {
         /**
         * Kutsutaan kun peli on ratkaistu
@@ -60,7 +64,7 @@ public class Peli {
     }
 
     /**
-     * Asettaa ratkaisun yhteydessä tapahtuvan callback-kutsun luokan
+     * Asettaa ratkaisun yhteydessä tapahtuvan tapahtuma-kutsun "suunnan".
      * 
      * @param tapahtuma tapahtuma-luokka
      */
@@ -80,7 +84,7 @@ public class Peli {
     }
     
     /**
-     * Kutsuu callbackiä, jos ratkaistu.
+     * Kutsuu RatkaisuTapahtuman, jos ratkaistu.
      */
     private void tarkistaOnkoRatkaistu() {
         if ((tapahtuma != null) && saaret.ratkaistu()) {

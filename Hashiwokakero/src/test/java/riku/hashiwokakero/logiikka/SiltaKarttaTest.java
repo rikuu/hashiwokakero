@@ -98,6 +98,10 @@ public class SiltaKarttaTest {
         Silta s = kartta.getSilta(1, 0);
         assertEquals(s.lahto, a);
         assertEquals(s.loppu, b);
+        
+        // Tuhoo sen <= -> < mutantin
+        assertEquals(s, kartta.getSilta(2, 0));
+        assertEquals(s, kartta.getSilta(0, 0));
     }
     
     @Test
@@ -107,6 +111,9 @@ public class SiltaKarttaTest {
         Silta s = kartta.getSilta(0, 1);
         assertEquals(s.lahto, a);
         assertEquals(s.loppu, c);
+        
+        assertEquals(s, kartta.getSilta(0, 2));
+        assertEquals(s, kartta.getSilta(0, 0));
     }
     
     @Test
