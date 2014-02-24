@@ -12,25 +12,26 @@ import riku.hashiwokakero.logiikka.SiltaKartta;
 /**
  * Piirtää sillat ruudulle
  */
-public class Sillat {
+public class SiltojenPiirtaja {
     /**
      * Nykyisen pelin SiltaKartta
      */
     private final SiltaKartta sillat;
     
     /**
-     * @param s Siltakartta nykyiselle pelille
+     * Luo uuden SiltojenPiirtajan
+     * @param s SiltaKartta nykyiselle pelille
      */
-    public Sillat(SiltaKartta s) {
+    public SiltojenPiirtaja(SiltaKartta s) {
         sillat = s;
     }
     
     /**
      * Piirtää kaikki sillat.
-     * @param g2 
-     * @param animaatioOffset 
+     * @param g2 Javan Graphics2D piirtämiseen
+     * @param animaatioSiirtyma Kuinka paljon kuuluu kuvaa siirtää x-akselilla.
      */
-    public void piirra(Graphics2D g2, int animaatioOffset) {
+    public void piirra(Graphics2D g2, int animaatioSiirtyma) {
         g2.setStroke(new BasicStroke(6));
         g2.setColor(Color.white);
         
@@ -38,26 +39,24 @@ public class Sillat {
             Point lahto = Util.ruudulle(s.lahto.x, s.lahto.y);
             Point loppu = Util.ruudulle(s.loppu.x, s.loppu.y);
             
-            lahto.x += animaatioOffset;
-            loppu.x += animaatioOffset;
+            lahto.x += animaatioSiirtyma;
+            loppu.x += animaatioSiirtyma;
             
             if (s.onTupla()) {
-                // Piirtää kaksi siltaa vierekkäin, jos on tupla
-                
-                int offsetX, offsetY;
+                int siirtymaX, siirtymaY;
                 if (s.lahto.x == s.loppu.x) {
-                    offsetX = 6;
-                    offsetY = 0;
+                    siirtymaX = 6;
+                    siirtymaY = 0;
                 } else {
-                    offsetX = 0;
-                    offsetY = 6;
+                    siirtymaX = 0;
+                    siirtymaY = 6;
                 }
 
-                g2.drawLine(lahto.x + offsetX, lahto.y + offsetY,
-                        loppu.x + offsetX, loppu.y + offsetY);
+                g2.drawLine(lahto.x + siirtymaX, lahto.y + siirtymaY,
+                        loppu.x + siirtymaX, loppu.y + siirtymaY);
 
-                g2.drawLine(lahto.x - offsetX, lahto.y - offsetY,
-                        loppu.x - offsetX, loppu.y - offsetY);
+                g2.drawLine(lahto.x - siirtymaX, lahto.y - siirtymaY,
+                        loppu.x - siirtymaX, loppu.y - siirtymaY);
             } else {
                 g2.drawLine(lahto.x, lahto.y, loppu.x, loppu.y);
             }

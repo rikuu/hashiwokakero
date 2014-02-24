@@ -14,9 +14,9 @@ import riku.hashiwokakero.logiikka.Peli;
  * @see Peli
  */
 public class PeliLauta extends JPanel {
-    private final Sillat sillasto;
-    private final Saaret saaristo;
-    private final Rakentaja rakentaja;
+    private final SiltojenPiirtaja siltojenPiirtaja;
+    private final SaarienPiirtaja saarienPiirtaja;
+    private final SiltojenRakentaja siltojenRakentaja;
     
     /**
      * Animaatio PeliLaudan kiinnostaviin liikkeisiin.
@@ -28,12 +28,12 @@ public class PeliLauta extends JPanel {
      * @param peli peli, jolle lauta luodaan
      */
     public PeliLauta(Peli peli) {
-        sillasto = new Sillat(peli.getSillat());
-        saaristo = new Saaret(peli.getSaaret());
+        siltojenPiirtaja = new SiltojenPiirtaja(peli.getSillat());
+        saarienPiirtaja = new SaarienPiirtaja(peli.getSaaret());
         
-        rakentaja = new Rakentaja(peli);
-        addMouseListener(rakentaja);
-        addMouseMotionListener(rakentaja);
+        siltojenRakentaja = new SiltojenRakentaja(peli);
+        addMouseListener(siltojenRakentaja);
+        addMouseMotionListener(siltojenRakentaja);
         
         setBackground(Color.black);
         setDoubleBuffered(true);
@@ -58,15 +58,15 @@ public class PeliLauta extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         
-        int offset = 0;
+        int siirtyma = 0;
         if (animaatio != null) {
             animaatio.step();
-            offset = animaatio.getOffset();
+            siirtyma = animaatio.getArvo();
         }
         
-        sillasto.piirra(g2, offset);
-        rakentaja.piirra(g2);
-        saaristo.piirra(g2, offset);
+        siltojenPiirtaja.piirra(g2, siirtyma);
+        siltojenRakentaja.piirra(g2);
+        saarienPiirtaja.piirra(g2, siirtyma);
     }
 }
 

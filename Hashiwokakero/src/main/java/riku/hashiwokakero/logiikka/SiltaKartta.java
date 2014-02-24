@@ -12,7 +12,7 @@ public class SiltaKartta {
     /**
      * Lista kaikista silloista
      */
-    private ArrayList<Silta> sillat;
+    private final ArrayList<Silta> sillat;
     
     /**
      * Luo uuden SiltaKartan

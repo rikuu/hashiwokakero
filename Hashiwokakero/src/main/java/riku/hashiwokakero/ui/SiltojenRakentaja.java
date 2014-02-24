@@ -16,14 +16,14 @@ import riku.hashiwokakero.logiikka.Peli;
  * Kuuntelee hiiren tekemisiä ja sen mukaan joko rakentaa
  * tai purkaa siltoja.
  */
-public class Rakentaja implements MouseListener, MouseMotionListener {
+public class SiltojenRakentaja implements MouseListener, MouseMotionListener {
     /**
      * Nykyinen peli
      */
-    private Peli peli;
+    private final Peli peli;
     
     /**
-     * True, jos lähtöpaikka uudelle sillalle on valittu.
+     * Onko lähtöpaikka uudelle sillalle on valittu.
      */
     private boolean raahaus;
     
@@ -35,7 +35,7 @@ public class Rakentaja implements MouseListener, MouseMotionListener {
     /**
      * @param peli Nykyinen peli
      */
-    public Rakentaja(Peli peli) {
+    public SiltojenRakentaja(Peli peli) {
         this.peli = peli;
         
         raahaus = false;

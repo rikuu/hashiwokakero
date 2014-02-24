@@ -31,7 +31,7 @@ public class Animaatio {
      * Lineaarisesti interpoloi animaation paikan nykyisellä hetkellä.
      * @return Animaation nykyinen arvo
      */
-    public int getOffset() {
+    public int getArvo() {
         if (aika <= 1.0) {
             return (int) (alku + (loppu - alku) * aika);
         }
