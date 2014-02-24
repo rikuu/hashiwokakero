@@ -11,13 +11,15 @@ public class GeneraattoriTest {
     private SaariKartta saaret;
     private Generaattori gen;
     
+    private final static Point
+            max = new Point(Integer.MAX_VALUE, Integer.MAX_VALUE),
+            min = new Point(Integer.MIN_VALUE, Integer.MIN_VALUE);
+    
     @Before
     public void setUp() {
         saaret = new SaariKartta();
         
-        gen = new Generaattori(saaret,
-                new Point(Integer.MAX_VALUE, Integer.MAX_VALUE),
-                new Point(Integer.MIN_VALUE, Integer.MIN_VALUE));
+        gen = new Generaattori(saaret, max, min);
     }
     
     @Test
@@ -69,5 +71,31 @@ public class GeneraattoriTest {
         saaret.lisaa(gen.uusiSaari());
         
         assertTrue(pohja.getVaaditutSillat() > 0);
+    }
+    
+    @Test
+    public void eiSaartaAlleMinimin() {
+        gen = new Generaattori(saaret, max, new Point(0, 0));
+        
+        for (int i = 0; i < 10; i++) {
+            Saari s = gen.uusiSaari();
+            saaret.lisaa(s);
+            
+            assertTrue(s.x >= 0);
+            assertTrue(s.y >= 0);
+        }
+    }
+    
+    @Test
+    public void eiSaartaYliMaksimin() {
+        gen = new Generaattori(saaret, new Point(0, 0), min);
+        
+        for (int i = 0; i < 10; i++) {
+            Saari s = gen.uusiSaari();
+            saaret.lisaa(s);
+            
+            assertTrue(s.x <= 0);
+            assertTrue(s.y <= 0);
+        }
     }
 }

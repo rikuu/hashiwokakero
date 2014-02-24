@@ -11,11 +11,9 @@ public class PeliTest {
     private Saari s1, s2;
     private Tapahtuma t;
     
-    private final static Point max = new Point(Integer.MAX_VALUE,
-            Integer.MAX_VALUE);
-    
-    private final static Point min = new Point(Integer.MIN_VALUE,
-            Integer.MIN_VALUE);
+    private final static Point
+            max = new Point(Integer.MAX_VALUE, Integer.MAX_VALUE),
+            min = new Point(Integer.MIN_VALUE, Integer.MIN_VALUE);
     
     private class Tapahtuma implements Peli.RatkaisuTapahtuma {
         public boolean kutsuttu;

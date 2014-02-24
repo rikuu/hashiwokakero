@@ -50,10 +50,10 @@ public class Generaattori {
             paikka.y += p;
         }
         
-        if ((paikka.x <= minimiKoordinaatti.x) ||
-                (paikka.x >= maksimiKoordinaatti.x) ||
-                (paikka.y <= minimiKoordinaatti.y) ||
-                (paikka.y >= maksimiKoordinaatti.y)) {
+        if ((paikka.x < minimiKoordinaatti.x) ||
+                (paikka.x > maksimiKoordinaatti.x) ||
+                (paikka.y < minimiKoordinaatti.y) ||
+                (paikka.y > maksimiKoordinaatti.y)) {
             return arvoPaikka(pohja);
         }
         
