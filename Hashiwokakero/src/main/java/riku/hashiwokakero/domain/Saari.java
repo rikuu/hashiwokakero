@@ -14,6 +14,12 @@ public class Saari {
      */
     private int sillat, vaaditutSillat;
     
+    /**
+     * Luo uuden saaren.
+     * @param x X-koordinaatti
+     * @param y Y-koordinaatti
+     * @param siltoja Vaadittujen siltojen määrä
+     */
     public Saari(int x, int y, int siltoja) {
         vaaditutSillat = Math.max(siltoja, 0);
         

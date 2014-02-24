@@ -28,6 +28,11 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
      */
     private PeliLauta lauta;
     
+    /**
+     * Saarien määrä seuraavassa pelissä on.
+     */
+    private int saaria = 3;
+    
     @Override
     public void run() {
         frame = new JFrame("Hashiwokakero");
@@ -47,11 +52,16 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
      * Luo uuden Pelin, PeliLaudan ja lisää sen ruudulle.
      */
     private void uusiPeli() {
-        Peli peli = new Peli(10);
+        Peli peli = new Peli(saaria);
         peli.setTapahtuma(this);
         
         lauta = new PeliLauta(peli);
         frame.add(lauta);
+        
+        // Kuuluu kasvattaa saarien määrää mielyttävästi.
+        // Tää on melko mielivaltanen päätös.
+        // Silti mielyttävä.
+        saaria = Math.min((int) Math.round(saaria * 1.3), 10);
     }
     
     /**
