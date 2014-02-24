@@ -1,5 +1,6 @@
 package riku.hashiwokakero.logiikka;
 
+import java.awt.Point;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -108,9 +109,46 @@ public class SaariKarttaTest {
     
     @Test
     public void saariEiLoydy() {
-        Saari s1 = new Saari(0, 0, 0);
-        saaret.lisaa(s1);
+        saaret.lisaa(new Saari(0, 0, 0));
         
         assertNull(saaret.getSaari(1, 0));
+    }
+    
+    @Test
+    public void keskittaaYhdenSaaren() {
+        saaret.lisaa(new Saari(0, 0, 0));        
+        saaret.keskitaSaaret();
+        
+        Saari s = saaret.getSaaret().get(0);
+        
+        assertEquals(s.x, 0);
+        assertEquals(s.y, 0);
+    }
+    
+    @Test
+    public void keskittaaKaksiSaarta() {
+        saaret.lisaa(new Saari(0, 0, 1));
+        saaret.lisaa(new Saari(2, 2, 1));
+        
+        saaret.keskitaSaaret();
+        
+        Saari s1 = saaret.getSaaret().get(0);
+        Saari s2 = saaret.getSaaret().get(1);
+        
+        assertEquals(s1.x, -1);
+        assertEquals(s1.y, -1);
+        
+        assertEquals(s2.x, 1);
+        assertEquals(s2.y, 1);
+    }
+    
+    @Test
+    public void laskeeKeskipisteenOikein() {
+        saaret.lisaa(new Saari(-1, 0, 1));
+        saaret.lisaa(new Saari(2, -2, 1));
+        
+        Point keski = saaret.laskeKeskipiste();
+        assertEquals(keski.x, 0);
+        assertEquals(keski.y, -1);
     }
 }

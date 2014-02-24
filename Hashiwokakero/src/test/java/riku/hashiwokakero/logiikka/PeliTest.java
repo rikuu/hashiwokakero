@@ -54,7 +54,7 @@ public class PeliTest {
     
     @Test
     public void loytaaSillan() {
-        assertEquals(peli.onSaari(0, 0), true);
+        assertEquals(peli.onSaari(s1.x, s1.y), true);
     }
     
     @Test
@@ -117,5 +117,14 @@ public class PeliTest {
         peli.poistaSilta(0,0);
         
         assertTrue(t.kutsuttu);
+    }
+        
+    @Test
+    public void keskittaaSaaret() {
+        // Etäisyyden nollasta (= keskellä ruudukkoa) neliö
+        int etaisyys1 = s1.x*s1.x + s1.y*s1.y;
+        int etaisyys2 = s2.x*s2.x + s2.y*s2.y;
+        
+        assertEquals(etaisyys1, etaisyys2);
     }
 }
