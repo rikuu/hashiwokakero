@@ -7,6 +7,9 @@ import java.awt.Point;
  * Jotain apumetodeja ui-luokille
  */
 public class Util {
+    /**
+     * Ruudun X- ja Y-resoluutio
+     */
     public static final int resoluutioX = 800, resoluutioY = 600;
     
     /**
