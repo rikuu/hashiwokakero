@@ -1,5 +1,6 @@
 package riku.hashiwokakero.logiikka;
 
+import java.awt.Point;
 import riku.hashiwokakero.domain.Saari;
 import java.util.ArrayList;
 
@@ -87,5 +88,46 @@ public class SaariKartta {
         }
         
         return false;
+    }
+    
+    /**
+     * Laskee SaariKartan saarten keskipisteen.
+     * @return keskipiste
+     */
+    private Point laskeKeskipiste() {
+        Point max = new Point(0, 0);
+        Point min = new Point(0, 0);
+        
+        for (Saari s : saaret) {
+            max.x = Math.max(s.x, max.x);
+            max.y = Math.max(s.y, max.y);
+            
+            min.x = Math.min(s.x, min.x);
+            min.y = Math.min(s.y, min.y);
+        }
+        
+        Point keskipiste = new Point(0, 0);
+        keskipiste.x = min.x + (max.x - min.x) / 2;
+        keskipiste.y = min.y + (max.y - min.y) / 2;
+        
+        return keskipiste;
+    }
+    
+    /**
+     * Siirtää saaret keskelle.
+     */
+    public void keskitaSaaret() {
+        Point keskipiste = laskeKeskipiste();
+        
+        ArrayList<Saari> uudetSaaret = new ArrayList<>();
+        for (Saari s : saaret) {
+            int uusiX = s.x - keskipiste.x;
+            int uusiY = s.y - keskipiste.y;
+            
+            Saari uusiSaari = new Saari(uusiX, uusiY, s.getVaaditutSillat());
+            uudetSaaret.add(uusiSaari);
+        }
+        
+        saaret = uudetSaaret;
     }
 }

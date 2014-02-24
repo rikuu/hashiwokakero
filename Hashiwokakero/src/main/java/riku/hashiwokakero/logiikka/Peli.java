@@ -47,6 +47,8 @@ public class Peli {
     private void uusiPeli(int maara) {
         for (int i = 0; i < maara; i++)
             saaret.lisaa(gen.uusiSaari());
+        
+        saaret.keskitaSaaret();
     }
     
     public SiltaKartta getSillat() {
