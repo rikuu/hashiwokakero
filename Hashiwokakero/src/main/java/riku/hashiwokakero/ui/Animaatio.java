@@ -28,12 +28,22 @@ public class Animaatio {
     }
     
     /**
+     * Toteutus smoothstep-funktiosta
+     * http://en.wikipedia.org/wiki/Smoothstep
+     * @param x arvo 0..1
+     * @return smoothstepattu x, joka on myös 0..1
+     */
+    private double smoothstep(double x) {
+        return x*x*(3 - 2*x);
+    }
+    
+    /**
      * Lineaarisesti interpoloi animaation paikan nykyisellä hetkellä.
      * @return Animaation nykyinen arvo
      */
     public int getArvo() {
         if (aika <= 1.0) {
-            return (int) (alku + (loppu - alku) * aika);
+            return (int) (alku + (loppu - alku) * smoothstep(aika));
         }
         
         return loppu;
