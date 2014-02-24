@@ -17,7 +17,15 @@ import riku.hashiwokakero.logiikka.Peli;
  * Luo ikkunan pelille ja tekee uuden pelin kun edellinen loppuu.
  */
 public class Main implements Runnable, Peli.RatkaisuTapahtuma {
+    /**
+     * Swing käyttää JFramea hoitamaan asioita. Ei ole mitä haluan
+     * henkilökohtaisesti tehdä, mutta en voi asialle mitään.
+     */
     private JFrame frame;
+    
+    /**
+     * Nykyinen (tai seuraava jos animaatio tapahtumassa) PeliLauta.
+     */
     private PeliLauta lauta;
     
     @Override
@@ -25,7 +33,7 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         frame = new JFrame("Hashiwokakero");
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(Util.resx, Util.resy);
+        frame.setSize(Util.resoluutioX, Util.resoluutioY);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setResizable(false);
@@ -33,14 +41,17 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         lisaaSulkuKuuntelija();
         
         uusiPeli();
-        frame.add(lauta);
     }
     
+    /**
+     * Luo uuden Pelin, PeliLaudan ja lisää sen ruudulle.
+     */
     private void uusiPeli() {
         Peli peli = new Peli(10);
         peli.setTapahtuma(this);
         
         lauta = new PeliLauta(peli);
+        frame.add(lauta);
     }
     
     /**
@@ -60,38 +71,49 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
                 JComponent.WHEN_IN_FOCUSED_WINDOW);
     }
     
+    /**
+     * Pitää huolta että PeliLaudan animointi vie 100 freimiä molempiin
+     * suuntiin ja sen jälkeen poistaa vanhan.
+     */
     private class Animoija implements ActionListener {
+        /**
+         * Kertoo missä freimissä mennään
+         */
         private int i;
-        private final PeliLauta vanhaLauta;
         
-        public Animoija(PeliLauta uusLauta) {
+        /**
+         * Vanha PeliLauta
+         */
+        private final PeliLauta vanhaLauta;
+       
+        /**
+         * Luo uuden Animoijan.
+         * @param vanhaLauta edellinen PeliLauta
+         */
+        public Animoija(PeliLauta vanhaLauta) {
             i = 0;
-            this.vanhaLauta = uusLauta;
+            this.vanhaLauta = vanhaLauta;
         }
         
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (i == 100) {
-                if (vanhaLauta != null) {
+            if (vanhaLauta != null) {
+                if (i == 100) {                
                     frame.remove(vanhaLauta);
+                    
+                    frame.invalidate();
+                    frame.validate();
+                } else if (i < 100) {
+                    vanhaLauta.repaint();
                 }
-                
-                frame.add(lauta);
-                
-                frame.invalidate();
-                frame.validate();
-            }
-            
-            if ((i < 100) && (vanhaLauta != null)) {
-                vanhaLauta.repaint();                
-            } else {
-                lauta.repaint();
             }
             
             if (i < 200) {
-                i += 1;
+                if (i > 100) {
+                    lauta.repaint();
+                }
                 
-                ((Timer)e.getSource()).restart();
+                i += 1;
             }
         }
     }
@@ -112,6 +134,10 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         timer.start();
     }
     
+    /**
+     * main-metodi mihin Java haluu tarttuu
+     * @param args nää on mitä Java myös haluu
+     */
     public static void main(String[] args) {
         Main main = new Main();
         SwingUtilities.invokeLater(main);

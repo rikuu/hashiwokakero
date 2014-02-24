@@ -18,6 +18,9 @@ public class PeliLauta extends JPanel {
     private final Saaret saaristo;
     private final Rakentaja rakentaja;
     
+    /**
+     * Animaatio PeliLaudan kiinnostaviin liikkeisiin.
+     */
     private Animaatio animaatio;
     
     /**
@@ -36,17 +39,23 @@ public class PeliLauta extends JPanel {
         setDoubleBuffered(true);
     }
     
+    /**
+     * Animoi x-paikkaa oikealta keskelle.
+     */
     public void animoiSisaan() {
-        animaatio = new Animaatio(Util.resx, 0);
+        animaatio = new Animaatio(Util.resoluutioX, 0);
     }
     
+    /**
+     * Animoi x-paikan keskeltä vasemmalta ulos.
+     */
     public void animoiUlos() {
-        animaatio = new Animaatio(0, -Util.resx);
+        animaatio = new Animaatio(0, -Util.resoluutioX);
     }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         
         int offset = 0;

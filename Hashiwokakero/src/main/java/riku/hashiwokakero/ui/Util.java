@@ -7,10 +7,7 @@ import java.awt.Point;
  * Jotain apumetodeja ui-luokille
  */
 public class Util {
-    /**
-     * Peli-ikkunan x- ja y-resoluutio
-     */
-    public static final int resx = 800, resy = 600;
+    public static final int resoluutioX = 800, resoluutioY = 600;
     
     /**
      * Saaren sivun pituus
@@ -36,8 +33,8 @@ public class Util {
      * @return 
      */
     public static Point ruudulle(int x, int y) {
-        int rx = (resx / 2) + (x * saarenKoko);
-        int ry = (resy / 2) + (y * saarenKoko);
+        int rx = (resoluutioX / 2) + (x * saarenKoko);
+        int ry = (resoluutioY / 2) + (y * saarenKoko);
         
         return new Point(rx, ry);
     }
@@ -49,8 +46,8 @@ public class Util {
      * @return 
      */
     public static Point ruudukkoon(Point p) {
-        double dx = (double) (p.x - (resx / 2)) / saarenKoko;
-        double dy = (double) (p.y - (resy / 2)) / saarenKoko;
+        double dx = (double) (p.x - (resoluutioX / 2)) / saarenKoko;
+        double dy = (double) (p.y - (resoluutioY / 2)) / saarenKoko;
 
         int x = (int) Math.round(dx);
         int y = (int) Math.round(dy);
