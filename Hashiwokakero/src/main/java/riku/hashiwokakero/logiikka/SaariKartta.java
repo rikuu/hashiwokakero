@@ -94,7 +94,7 @@ public class SaariKartta {
      * Laskee SaariKartan saarten keskipisteen.
      * @return keskipiste
      */
-    public Point laskeKeskipiste() {
+    protected Point laskeKeskipiste() {
         Point max = new Point(0, 0);
         Point min = new Point(0, 0);
         

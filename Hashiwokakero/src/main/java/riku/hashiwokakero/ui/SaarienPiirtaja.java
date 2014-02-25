@@ -1,8 +1,10 @@
 package riku.hashiwokakero.ui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.font.GlyphVector;
 
 import riku.hashiwokakero.domain.Saari;
 
@@ -67,17 +69,31 @@ public class SaarienPiirtaja {
      */
     public void piirra(Graphics2D g2, int animaatioSiirtyma) {
         for (Saari saari : saaret.getSaaret()) {
-            Point rsaari = Util.ruudulle(saari.x, saari.y);
+            Point ruutu = Util.ruudulle(saari.x, saari.y);
+            ruutu.x += animaatioSiirtyma;
 
             g2.setColor(Util.puolitaAlfa(VARIT[saari.getSillat()]));
-            g2.fillRect(rsaari.x - puolikasIsompi + animaatioSiirtyma,
-                    rsaari.y - puolikasIsompi,
+            g2.fillRect(ruutu.x - puolikasIsompi, ruutu.y - puolikasIsompi,
                     isompiSaari, isompiSaari);
 
             g2.setColor(VARIT[saari.getVaaditutSillat()]);
-            g2.fillRect(rsaari.x - puolSaari + animaatioSiirtyma,
-                    rsaari.y - puolSaari,
+            g2.fillRect(ruutu.x - puolSaari, ruutu.y - puolSaari,
                     Util.saarenKoko, Util.saarenKoko);
+            
+            int siltojaLisaa = saari.getVaaditutSillat() - saari.getSillat();
+            if (siltojaLisaa > 0) {
+                g2.setColor(Util.puolitaAlfa(VARIT[saari.getSillat()]));
+                
+                Font fontti = new Font(Font.MONOSPACED, Font.BOLD, puolSaari);
+                
+                GlyphVector glyph =
+                        fontti.createGlyphVector(g2.getFontRenderContext(),
+                                Integer.toString(siltojaLisaa));
+                
+                g2.drawGlyphVector(glyph,
+                        ruutu.x - (puolSaari / 4),
+                        ruutu.y + (puolSaari / 4));
+            }
         }
     }
 }

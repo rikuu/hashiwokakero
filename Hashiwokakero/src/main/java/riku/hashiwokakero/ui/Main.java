@@ -119,23 +119,25 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (vanhaLauta != null) {
-                if (i == 100) {                
-                    frame.remove(vanhaLauta);
-                    
-                    frame.invalidate();
-                    frame.validate();
-                } else if (i < 100) {
-                    vanhaLauta.repaint();
-                }
-            }
-            
             if (i < 200) {
+                if (vanhaLauta != null) {
+                    if (i < 100) {
+                       vanhaLauta.repaint();
+                    } else if (i == 100) {
+                       frame.remove(vanhaLauta);
+
+                       frame.invalidate();
+                       frame.validate();
+                   }
+                }
+                
                 if (i > 100) {
                     lauta.repaint();
                 }
                 
                 i += 1;
+            } else {
+                ((Timer) e.getSource()).stop();
             }
         }
     }
@@ -152,7 +154,6 @@ public class Main implements Runnable, Peli.RatkaisuTapahtuma {
         lauta.animoiSisaan();
         
         Timer timer = new Timer(10, new Animoija(vanha));
-        timer.setRepeats(true);
         timer.start();
     }
     
