@@ -35,14 +35,10 @@ public class SiltojenPiirtaja {
     public void piirra(Graphics2D g2, int animaatioSiirtyma) {
         g2.setStroke(new BasicStroke(6));
         
-        ArrayList<ArrayList<Silta>> r = sillat.ryhmita();
+        ArrayList<ArrayList<Silta>> ryhmat = sillat.getRyhmat();
         
         for (Silta s : sillat.getSillat()) {
-            for (int i = 0; i < r.size(); i++) {
-                if (r.get(i).contains(s)) {
-                    g2.setColor(Util.vari(i+1).brighter());
-                }
-            }
+            g2.setColor(Util.ryhmanVari(s, ryhmat));
             
             Point lahto = Util.ruudulle(s.lahto.x, s.lahto.y);
             Point loppu = Util.ruudulle(s.loppu.x, s.loppu.y);
@@ -51,12 +47,10 @@ public class SiltojenPiirtaja {
             loppu.x += animaatioSiirtyma;
             
             if (s.onTupla()) {
-                int siirtymaX, siirtymaY;
+                int siirtymaX = 0, siirtymaY = 0;
                 if (s.lahto.x == s.loppu.x) {
                     siirtymaX = 6;
-                    siirtymaY = 0;
                 } else {
-                    siirtymaX = 0;
                     siirtymaY = 6;
                 }
 

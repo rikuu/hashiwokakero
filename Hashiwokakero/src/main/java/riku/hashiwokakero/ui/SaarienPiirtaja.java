@@ -55,11 +55,11 @@ public class SaarienPiirtaja {
             Point ruutu = Util.ruudulle(saari.x, saari.y);
             ruutu.x += animaatioSiirtyma;
 
-            g2.setColor(Util.puolitaAlfa(Util.vari(saari.getSillat())));
+            g2.setColor(Util.puolitaAlfa(Util.getVari(saari.getSillat())));
             g2.fillRect(ruutu.x - puolikasIsompi, ruutu.y - puolikasIsompi,
                     isompiSaari, isompiSaari);
 
-            g2.setColor(Util.vari(saari.getVaaditutSillat()));
+            g2.setColor(Util.getVari(saari.getVaaditutSillat()));
             g2.fillRect(ruutu.x - puolSaari, ruutu.y - puolSaari,
                     Util.saarenKoko, Util.saarenKoko);
             

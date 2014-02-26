@@ -70,7 +70,12 @@ public class Silta {
                 (lahto == b) && (loppu == a);
     }
     
-    public boolean yhdistaa(Saari a) {
-        return ((lahto == a) || (loppu == a));
+    /**
+     * Kertoo yhdistääkö silta annetun saaren.
+     * @param saari Saari
+     * @return Yhdistääkö
+     */
+    public boolean yhdistaa(Saari saari) {
+        return ((lahto == saari) || (loppu == saari));
     }
 }

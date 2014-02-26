@@ -100,11 +100,11 @@ public class Peli {
     }
     
     /**
-     * Kutsuu RatkaisuTapahtuman, jos ratkaistu.
+     * Kutsuu RatkaisuTapahtuman jos ratkaistu.
      */
     private void tarkistaOnkoRatkaistu() {
         if ((tapahtuma != null) && saaret.ratkaistu() &&
-                (sillat.ryhmita().size() == 1)) {
+                (sillat.getRyhmat().size() == 1)) {
             tapahtuma.peliRatkaistu();
         }
     }

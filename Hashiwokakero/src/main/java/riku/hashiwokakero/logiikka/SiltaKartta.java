@@ -16,10 +16,23 @@ public class SiltaKartta {
     private final ArrayList<Silta> sillat;
     
     /**
+     * Sillat ryhmitetty yhteisten saarien mukaan.
+     */
+    private ArrayList<ArrayList<Silta>> ryhmat;
+    
+    /**
+     * Kertoo onko ryhmat ajantasalla.
+     */
+    private boolean ryhmatSynkronisoitu;
+    
+    /**
      * Luo uuden SiltaKartan
      */
     public SiltaKartta() {
         sillat = new ArrayList<>();
+        
+        ryhmat = new ArrayList<>();
+        ryhmatSynkronisoitu = true;
     }
     
     /**
@@ -32,6 +45,8 @@ public class SiltaKartta {
         if (((a.x != b.x) && (a.y != b.y)) || (a == b))
             return;
 
+        ryhmatSynkronisoitu = false;
+        
         for (Silta s : sillat) {
             if (s.yhdistaa(a, b)) {
                 s.tuplaa();
@@ -53,6 +68,7 @@ public class SiltaKartta {
                 s.romauta();
                 sillat.remove(s);
                 
+                ryhmatSynkronisoitu = false;
                 return;
             }
         }
@@ -89,41 +105,59 @@ public class SiltaKartta {
         return null;
     }
     
-    public ArrayList<ArrayList<Silta>> ryhmita() {
-        ArrayList<ArrayList<Silta>> ryhmat = new ArrayList<>();
+    /**
+     * Jakaa sillat ryhmiin, sen mukaan yhdistävätkö sillat yhteisiä saaria.
+     * Kuuluu kutsua aina jos siltoja on lisätty tai poistettu.
+     */
+    private void ryhmita() {
+        ryhmat.clear();
         
+        // Ei voi iteroida tän läpi, koska Java on vihainen ja vaati uhrauksia.
         ArrayList<Silta> sillatJaljella = (ArrayList<Silta>) sillat.clone();
+        
         for (Silta s : sillat) {
             if (!sillatJaljella.contains(s)) {
                 continue;
             }
             
             ArrayList<Silta> ryhma = new ArrayList<>();
-            ryhmat.add(ryhma);
-            
             ryhma.add(s);
             
-            LinkedList<Saari> jono = new LinkedList<>();
-            jono.push(s.lahto);
-            jono.push(s.loppu);
-            while (!jono.isEmpty()) {
-                Saari saari = jono.pop();
+            LinkedList<Saari> saaret = new LinkedList<>();
+            saaret.push(s.lahto);
+            saaret.push(s.loppu);
+            
+            while (!saaret.isEmpty()) {
+                Saari saari = saaret.pop();
+                
                 for (Silta silta : sillat) {
+                    if (!sillatJaljella.contains(silta) || (silta == s)) {
+                        continue;
+                    }
+                    
                     if (silta.yhdistaa(saari) && !ryhma.contains(silta)) {
                         sillatJaljella.remove(silta);
                         
                         ryhma.add(silta);
 
                         if (silta.lahto == saari) {
-                            jono.push(silta.loppu);
+                            saaret.push(silta.loppu);
                         } else {
-                            jono.push(silta.lahto);
+                            saaret.push(silta.lahto);
                         }
                     }
                 }
             }
+            
+            ryhmat.add(ryhma);
         }
-        
+    }
+    
+    public ArrayList<ArrayList<Silta>> getRyhmat() {
+        if (!ryhmatSynkronisoitu) {
+            ryhmita();
+        }
+            
         return ryhmat;
     }
 }

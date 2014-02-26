@@ -2,6 +2,8 @@ package riku.hashiwokakero.ui;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.util.ArrayList;
+import riku.hashiwokakero.domain.Silta;
 
 /**
  * Jotain apumetodeja ui-luokille
@@ -71,7 +73,29 @@ public class Util {
         new Color(253, 116, 0)
     };
     
-    public static Color vari(int i) {
-        return varit[Math.min(i, varit.length-1)];
+    /**
+     * Antaa kauniin värin millä tahansa kokonaisluvulla
+     * @param i Mikä tahansa kokonaisluku
+     * @return Kaunis väri
+     */
+    public static Color getVari(int i) {
+        return varit[Math.min(Math.max(i, 0), varit.length-1)];
+    }
+    
+    /**
+     * 
+     * @param silta
+     * @param ryhmat
+     * @return 
+     */
+    public static Color ryhmanVari(Silta silta,
+            ArrayList<ArrayList<Silta>> ryhmat) {
+        for (int i = 0; i < ryhmat.size(); i++) {
+            if (ryhmat.get(i).contains(silta)) {
+                return Util.getVari(i+1).brighter();
+            }
+        }
+        
+        return Util.getVari(1).brighter();
     }
 }
