@@ -57,7 +57,7 @@ public class Saari {
      * @param x haluttu määrä vaatia lisää siltoja
      */
     public void vaadiLisaa(int x) {
-        vaaditutSillat += x;
+        vaaditutSillat += Math.max(0, x);
     }
     
     /**

@@ -28,15 +28,6 @@ public class RyhmitysTest {
         kartta.lisaa(d, c);
     }
     
-    /*@Test
-    public void paivittaaRyhmat() {
-        ryhmat = kartta.getRyhmat();
-        
-        kartta.poista(a, b);
-                
-        //assertTrue(ryhmat != kartta.getRyhmat());
-    }*/
-    
     @Test
     public void ryhmiaYksiJosSaaretYhdistettyOikein() {
         ryhmat = kartta.getRyhmat();

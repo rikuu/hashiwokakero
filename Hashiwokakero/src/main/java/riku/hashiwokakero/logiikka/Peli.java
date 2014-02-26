@@ -58,7 +58,19 @@ public class Peli {
         
         uusiPeli(maara);
     }
-
+    
+    /**
+     * Luo pelin ilman saarien generointia.
+     * 
+     * @param saaret Valmis SaariKartta
+     */
+    public Peli(SaariKartta saaret) {
+        sillat = new SiltaKartta();
+        this.saaret = saaret;
+        
+        gen = null;
+    }
+    
     /**
      * Generoi saaret Generaattorilla
      * 

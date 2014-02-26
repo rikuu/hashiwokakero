@@ -55,6 +55,12 @@ public class SaariTest {
     }
     
     @Test
+    public void eiLisaaNegatiivisaVaadittujaSiltoja() {
+        saari.vaadiLisaa(-1);        
+        assertEquals(saari.getVaaditutSillat(), 0);
+    }
+    
+    @Test
     public void samaSaari() {
         assertTrue(saari.equals(saari));
     }

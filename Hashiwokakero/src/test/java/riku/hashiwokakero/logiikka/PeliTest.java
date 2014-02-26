@@ -106,8 +106,7 @@ public class PeliTest {
     @Test
     public void uusiSiltaKutsuuTapahtuman() {
         if (s1.getVaaditutSillat() == 2) {
-            s1.vaadiLisaa(-1);
-            s2.vaadiLisaa(-1);
+            peli.uusiSilta(s1.x, s1.y, s2.x, s2.y);
         }
         
         peli.uusiSilta(s1.x, s1.y, s2.x, s2.y);
@@ -115,16 +114,29 @@ public class PeliTest {
         assertTrue(t.kutsuttu);
     }
     
-    /*@Test
-    public void poistaSiltaKutsuuTapahtuman() {        
-        peli.uusiSilta(s1.x, s1.y, s2.x, s2.y);
-        peli.uusiSilta(s1.x, s1.y, s2.x, s2.y);
-        t.kutsuttu = false;
+    @Test
+    public void poistaSiltaKutsuuTapahtuman() {
+        SaariKartta saaret = new SaariKartta();
         
-        peli.poistaSilta(s1.x, s1.y);
+        saaret.lisaa(new Saari(2, 0, 1));
+        saaret.lisaa(new Saari(0, 0, 1));        
+        saaret.lisaa(new Saari(0, 2, 2));
+        saaret.lisaa(new Saari(2, 2, 2));
+        
+        peli = new Peli(saaret);
+        peli.setTapahtuma(t);
+        
+        peli.uusiSilta(2, 0, 0, 0);
+        peli.uusiSilta(0, 0, 0, 2);
+        peli.uusiSilta(0, 2, 2, 2);
+        peli.uusiSilta(2, 2, 2, 0);
+        
+        assertFalse(t.kutsuttu);
+        
+        peli.poistaSilta(1, 0);
         
         assertTrue(t.kutsuttu);
-    }*/
+    }
         
     @Test
     public void keskittaaSaaret() {
