@@ -57,4 +57,21 @@ public class Util {
         
         return new Point(x, y);
     }
+    
+    /**
+     * Pari nättiä väriä kaiken piirtämiseen.
+     */
+    private static final Color[] varit = {
+        new Color(0, 0, 0),
+        
+        new Color(0, 67, 88),
+        new Color(31, 138, 112),
+        new Color(190, 219, 57),
+        new Color(255, 225, 26),
+        new Color(253, 116, 0)
+    };
+    
+    public static Color vari(int i) {
+        return varit[Math.min(i, varit.length-1)];
+    }
 }

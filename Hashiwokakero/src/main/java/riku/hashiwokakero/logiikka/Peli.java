@@ -1,6 +1,9 @@
 package riku.hashiwokakero.logiikka;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.domain.Saari;
 
@@ -100,7 +103,8 @@ public class Peli {
      * Kutsuu RatkaisuTapahtuman, jos ratkaistu.
      */
     private void tarkistaOnkoRatkaistu() {
-        if ((tapahtuma != null) && saaret.ratkaistu()) {
+        if ((tapahtuma != null) && saaret.ratkaistu() &&
+                (sillat.ryhmita().size() == 1)) {
             tapahtuma.peliRatkaistu();
         }
     }

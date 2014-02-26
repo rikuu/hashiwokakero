@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.util.ArrayList;
 
 import riku.hashiwokakero.domain.Silta;
 
@@ -33,9 +34,16 @@ public class SiltojenPiirtaja {
      */
     public void piirra(Graphics2D g2, int animaatioSiirtyma) {
         g2.setStroke(new BasicStroke(6));
-        g2.setColor(Color.white);
+        
+        ArrayList<ArrayList<Silta>> r = sillat.ryhmita();
         
         for (Silta s : sillat.getSillat()) {
+            for (int i = 0; i < r.size(); i++) {
+                if (r.get(i).contains(s)) {
+                    g2.setColor(Util.vari(i+1).brighter());
+                }
+            }
+            
             Point lahto = Util.ruudulle(s.lahto.x, s.lahto.y);
             Point loppu = Util.ruudulle(s.loppu.x, s.loppu.y);
             

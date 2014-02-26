@@ -1,6 +1,7 @@
 package riku.hashiwokakero.logiikka;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.domain.Saari;
@@ -86,5 +87,43 @@ public class SiltaKartta {
         }
         
         return null;
+    }
+    
+    public ArrayList<ArrayList<Silta>> ryhmita() {
+        ArrayList<ArrayList<Silta>> ryhmat = new ArrayList<>();
+        
+        ArrayList<Silta> sillatJaljella = (ArrayList<Silta>) sillat.clone();
+        for (Silta s : sillat) {
+            if (!sillatJaljella.contains(s)) {
+                continue;
+            }
+            
+            ArrayList<Silta> ryhma = new ArrayList<>();
+            ryhmat.add(ryhma);
+            
+            ryhma.add(s);
+            
+            LinkedList<Saari> jono = new LinkedList<>();
+            jono.push(s.lahto);
+            jono.push(s.loppu);
+            while (!jono.isEmpty()) {
+                Saari saari = jono.pop();
+                for (Silta silta : sillat) {
+                    if (silta.yhdistaa(saari) && !ryhma.contains(silta)) {
+                        sillatJaljella.remove(silta);
+                        
+                        ryhma.add(silta);
+
+                        if (silta.lahto == saari) {
+                            jono.push(silta.loppu);
+                        } else {
+                            jono.push(silta.lahto);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return ryhmat;
     }
 }

@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.font.GlyphVector;
+import java.awt.geom.Rectangle2D;
 
 import riku.hashiwokakero.domain.Saari;
 
@@ -27,24 +28,6 @@ public class SaarienPiirtaja {
         this.saaret = saaret;
     }
     
-    /**
-     * Pari nättiä väriä saarten piirtämiseen.
-     * Indeksi menee siltojen määrän mukaan.
-     */
-    private static final Color[] VARIT = {
-        new Color(0, 0, 0),
-        
-        new Color(70, 137, 102),
-        new Color(255, 240, 165),
-        new Color(255, 176, 59),
-        new Color(182, 73, 38),
-        
-        new Color(255, 255, 255),
-        new Color(255, 255, 255),
-        new Color(255, 255, 255),
-        new Color(255, 255, 255)
-    };
-
     /**
      * Puolet saaren koosta. 
      */
@@ -72,17 +55,17 @@ public class SaarienPiirtaja {
             Point ruutu = Util.ruudulle(saari.x, saari.y);
             ruutu.x += animaatioSiirtyma;
 
-            g2.setColor(Util.puolitaAlfa(VARIT[saari.getSillat()]));
+            g2.setColor(Util.puolitaAlfa(Util.vari(saari.getSillat())));
             g2.fillRect(ruutu.x - puolikasIsompi, ruutu.y - puolikasIsompi,
                     isompiSaari, isompiSaari);
 
-            g2.setColor(VARIT[saari.getVaaditutSillat()]);
+            g2.setColor(Util.vari(saari.getVaaditutSillat()));
             g2.fillRect(ruutu.x - puolSaari, ruutu.y - puolSaari,
                     Util.saarenKoko, Util.saarenKoko);
             
             int siltojaLisaa = saari.getVaaditutSillat() - saari.getSillat();
             if (siltojaLisaa > 0) {
-                g2.setColor(Util.puolitaAlfa(VARIT[saari.getSillat()]));
+                g2.setColor(Util.puolitaAlfa(Color.BLACK));
                 
                 Font fontti = new Font(Font.MONOSPACED, Font.BOLD, puolSaari);
                 
@@ -90,9 +73,11 @@ public class SaarienPiirtaja {
                         fontti.createGlyphVector(g2.getFontRenderContext(),
                                 Integer.toString(siltojaLisaa));
                 
+                Rectangle2D asd = glyph.getVisualBounds();                
+                
                 g2.drawGlyphVector(glyph,
-                        ruutu.x - (puolSaari / 4),
-                        ruutu.y + (puolSaari / 4));
+                        (float) (ruutu.x - (asd.getMaxX() - asd.getMinX()) / 2),
+                        (float) (ruutu.y + (asd.getMaxY() - asd.getMinY()) / 2));
             }
         }
     }

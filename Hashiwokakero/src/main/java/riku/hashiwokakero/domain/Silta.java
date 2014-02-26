@@ -69,4 +69,8 @@ public class Silta {
         return ((lahto == a) && (loppu == b)) ||
                 (lahto == b) && (loppu == a);
     }
+    
+    public boolean yhdistaa(Saari a) {
+        return ((lahto == a) || (loppu == a));
+    }
 }
