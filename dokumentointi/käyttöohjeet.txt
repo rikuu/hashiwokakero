@@ -1,0 +1,19 @@
+Käyttöohjeet:
+
+Ensimmäisenä joudut hengittää syvään ja lukea ihan rauhassa nämä ohjeet; 
+kukaan ei ikinä ymmärrä miten peli toimii.
+
+Neliöt ruudulla on "saaria". Niitä kuuluu yhdistää silloilla. Siltoja
+rakennetaan ensin klikkaamalla saarta, sen jälkeen klikkaamalla toista saarta.
+Nyt saaret on yhdistetty vain ja jos vain valitut saaret ovat joko samalla
+pysty- tai vaakarivillä. Siltoja voi poistaa klikkaamalla siltaa.
+
+Saarilla on haluttu määrä siltoja joita siihen kuuluu yhdistää. Puuttuva määrä
+siltoja näkyy saarien keskellä. Siltoja voi rakentaan kahden saaren välille
+enintään kaksi.
+
+Saaret kuuluu yhdistää yhtenäiseksi ryhmäksi silloilla. Eri ryhmät saaria näkyy
+selvästi siltojen värin mukaan.
+
+Jos olet nyt saanut kentän ratkaistua, varaudu vaikeempaan kenttään joka on nyt
+jo tulossa.
