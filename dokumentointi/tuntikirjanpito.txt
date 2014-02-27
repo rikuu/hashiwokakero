@@ -13,5 +13,9 @@
 12.2	2h	Ohjelmointia
 13.2.	3h	Testejä, JavaDoc ja uus sekvenssikaavio. Kaikkee hauskaa.
 17.2.	1h	Ohjelmointia; siistei animaatioita
-18.2.	2h	Animaatioiden korjailua
+18.2.	2h	Ohjelmointia, animaatioiden korjailua
 14.2.	4h	Ohjelmointia, hienosäätöä
+24.2.	4h	Ohjelmointia, refactoria
+25.2.	1h	Pientä ohjelmointia
+26.2.	4h	Ohjelmointia
+27.2.	0.5h	Pikkupikku ohjelmointia
