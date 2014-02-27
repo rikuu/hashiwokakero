@@ -1,11 +1,9 @@
 ﻿Aihe: Hashiwokakero-peli
 
-Hashiwokakero on joku outo japanilainen puzzle-peli, jossa
-yhdistetään saaria silloilla, jotka asettuvat pysty- ja
-vaakasuoraan, muttei toistensa päälle. Saaret kuuluu
-yhdistää yhtenäiseksi alueeksi ja ne kertovat pelaajalle
-tarvittavien siltojen määrän. Kahta saarta yhdistää enintään
-kaksi siltaa.
+Hashiwokakero on joku outo japanilainen puzzle-peli, jossa yhdistetään saaria
+silloilla, jotka asettuvat pysty- ja vaakasuoraan, muttei toistensa päälle.
+Saaret kuuluu yhdistää yhtenäiseksi alueeksi ja ne kertovat pelaajalle
+tarvittavien siltojen määrän. Kahta saarta yhdistää enintään kaksi siltaa.
 
 Tarkoitus olisi myös generoida kiinnostava pelikenttä.
 
@@ -16,3 +14,11 @@ Käyttäjät: Pelaaja
 Toiminnot:
 	- Siltojen rakentaminen
 	- Siltojen poistaminen
+
+Rakenne:
+Main-luokka käynnistää ikkunan, luo Pelin ja toteuttaa RatkaisuTapahtuman, jota
+Peli voi kutsua.
+Siltojen- ja SaarienPiirtäjät luodaan PeliLaudalla. Piirtämistä varten ne
+pyytävät kaikki Sillat ja Saaret Silta- ja SaariKartoilta.
+PeliLauta siirtää itseään Animaation avulla.
+Generaattori luo Saaria (tai oikeestaan se "generoi" niitä hahaa.)
