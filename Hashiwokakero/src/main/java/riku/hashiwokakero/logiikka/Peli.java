@@ -1,9 +1,7 @@
 package riku.hashiwokakero.logiikka;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+
 import riku.hashiwokakero.domain.Silta;
 import riku.hashiwokakero.domain.Saari;
 
@@ -123,6 +121,7 @@ public class Peli {
 
     /**
      * Luo uuden sillan kahden saaren välille
+     * Kutsuu RatkaisuTapahtuman, jos ratkaistu.
      * 
      * @param ax Saaren A x-koordinaatti
      * @param ay Saaren A y-koordinaatti
@@ -141,7 +140,8 @@ public class Peli {
     }
     
     /**
-     * Poistaa koordinaattien alla olevan sillan
+     * Poistaa koordinaattien alla olevan sillan.
+     * Kutsuu RatkaisuTapahtuman, jos ratkaistu.
      * 
      * @param x x-koordinaatti
      * @param y y-koordinaatti

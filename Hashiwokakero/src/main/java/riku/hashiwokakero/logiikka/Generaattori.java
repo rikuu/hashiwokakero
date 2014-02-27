@@ -87,26 +87,6 @@ public class Generaattori {
         return saaret.getSaaret().get(i);
     }
     
-    /*private void lisaaSiltoja(Saari uusiSaari) {
-        for (Saari s : saaret.getSaaret()) {
-            if (uusiSaari.getVaaditutSillat() >= 4) {
-                return;
-            }
-            
-            if (saaret.saariaValissa(s, uusiSaari) ||
-                    ((s.x != uusiSaari.x) && (s.y != uusiSaari.y))) {
-                continue;
-            }
-            
-            int siltoja = arvoSiltojenMaara();
-            if (((s.getVaaditutSillat() + siltoja) <= 4)
-                    && (Math.random() <= 0.4)) {
-                s.vaadiLisaa(siltoja);
-                uusiSaari.vaadiLisaa(siltoja);
-            }
-        }
-    }*/
-    
     /**
      * Generoi uuden saaren
      * @return saari

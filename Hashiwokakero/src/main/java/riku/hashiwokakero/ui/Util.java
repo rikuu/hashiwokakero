@@ -83,10 +83,11 @@ public class Util {
     }
     
     /**
-     * 
-     * @param silta
-     * @param ryhmat
-     * @return 
+     * Hakee sillan ryhmän numeron ja antaa värin sen mukaan.
+     * @param silta Haettava silta
+     * @param ryhmat SiltaKartan ryhmät
+     * @return Nätti väri
+     * @see riku.hashiwokakero.logiikka.SiltaKartta
      */
     public static Color ryhmanVari(Silta silta,
             ArrayList<ArrayList<Silta>> ryhmat) {

@@ -1,7 +1,6 @@
 package riku.hashiwokakero.ui;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -21,10 +20,10 @@ public class SiltojenPiirtaja {
     
     /**
      * Luo uuden SiltojenPiirtajan
-     * @param s SiltaKartta nykyiselle pelille
+     * @param sillat SiltaKartta nykyiselle pelille
      */
-    public SiltojenPiirtaja(SiltaKartta s) {
-        sillat = s;
+    public SiltojenPiirtaja(SiltaKartta sillat) {
+        this.sillat = sillat;
     }
     
     /**

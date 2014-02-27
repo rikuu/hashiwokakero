@@ -18,7 +18,7 @@ public class SiltaKartta {
     /**
      * Sillat ryhmitetty yhteisten saarien mukaan.
      */
-    private ArrayList<ArrayList<Silta>> ryhmat;
+    private final ArrayList<ArrayList<Silta>> ryhmat;
     
     /**
      * Kertoo onko ryhmat ajantasalla.
@@ -106,8 +106,8 @@ public class SiltaKartta {
     }
     
     /**
-     * Jakaa sillat ryhmiin, sen mukaan yhdistävätkö sillat yhteisiä saaria.
-     * Kuuluu kutsua aina jos siltoja on lisätty tai poistettu.
+     * Jakaa sillat ryhmiin, sen mukaan yhdistävätkö sillat yhteisiä
+     * saaria. Kuuluu kutsua aina jos siltoja on lisätty tai poistettu.
      */
     private void ryhmita() {
         ryhmat.clear();
@@ -153,6 +153,11 @@ public class SiltaKartta {
         }
     }
     
+    /**
+     * Palauttaa sillat jaettuna ryhmiin yhteisten saarten mukaan.
+     * Generoi ryhmät, jos ne ovat vanhentuneet.
+     * @return ryhmät
+     */
     public ArrayList<ArrayList<Silta>> getRyhmat() {
         if (!ryhmatSynkronisoitu) {
             ryhmita();
