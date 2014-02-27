@@ -91,7 +91,11 @@ public class SiltojenRakentaja implements MouseListener, MouseMotionListener {
         } else {
             if (peli.onSaari(ruudukko.x, ruudukko.y)) {
                 raahaus = true;
-                lahto = hiiri = e.getPoint();
+                
+                Saari saari = peli.getSaaret().getSaari(ruudukko.x, ruudukko.y);
+                lahto = Util.ruudulle(saari.x, saari.y);
+                
+                hiiri = e.getPoint();
             } else {
                 peli.poistaSilta(ruudukko.x, ruudukko.y);
             }
