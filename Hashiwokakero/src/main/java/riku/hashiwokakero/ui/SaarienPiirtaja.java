@@ -43,13 +43,19 @@ public class SaarienPiirtaja {
     private static final int puolikasIsompi = isompiSaari / 2;
 
     /**
+     * Fontti numerojen piirtämiseen.
+     */
+    private static final Font fontti =
+            new Font(Font.DIALOG, Font.PLAIN, puolSaari);
+    
+    /**
      * Piirtää kaikki saaret ruudulle. Joka saaren takana on isompi neliö,
      * joka on myös läpinäkyvämpi.
      * @param g2 Javan Graphics2D piirtämiseen
      * @param animaatioSiirtyma Kuinka paljon kuuluu kuvaa siirtää x-akselilla.
      */
     public void piirra(Graphics2D g2, int animaatioSiirtyma) {
-        g2.setFont(new Font(Font.DIALOG, Font.PLAIN, puolSaari));
+        g2.setFont(fontti);
         
         for (Saari saari : saaret.getSaaret()) {
             Point ruutu = Util.ruudulle(saari.x, saari.y);
